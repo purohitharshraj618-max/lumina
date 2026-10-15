@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lumina – Modern High-Performance Editorial Blog & SEO Publishing Suite</title>
+    <meta name="description" content="A high-performance modern editorial blog platform with live SEO analytics, Schema.org JSON-LD generation, SERP previews, and one-click Vercel deployment readiness." />
+    
+    <!-- Canonical & SEO -->
+    <link rel="canonical" href="https://luminablog.vercel.app/" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="author" content="Lumina Editorial Team" />
+    <meta name="theme-color" content="#0f172a" />
+    
+    <!-- OpenGraph Social Cards -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Lumina – Modern High-Performance Editorial Blog & SEO Publishing Suite" />
+    <meta property="og:description" content="A high-performance modern editorial blog platform with live SEO analytics, Schema.org JSON-LD generation, SERP previews, and one-click Vercel deployment readiness." />
+    <meta property="og:site_name" content="Lumina Magazine" />
+    <meta property="og:url" content="https://luminablog.vercel.app/" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&h=630&q=80" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@luminablog" />
+    <meta name="twitter:creator" content="@luminablog" />
+    <meta name="twitter:title" content="Lumina – Modern High-Performance Editorial Blog & SEO Publishing Suite" />
+    <meta name="twitter:description" content="A high-performance modern editorial blog platform with live SEO analytics, Schema.org JSON-LD generation, SERP previews, and one-click Vercel deployment readiness." />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&h=630&q=80" />
+
+    <!-- Google Fonts: Inter & Newsreader for editorial distinction -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>" />
+
+    <!-- Schema.org WebSite structured data -->
+    <script type="application/ld+json" id="schema-ld-json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Lumina",
+      "alternateName": "Lumina Editorial Blog",
+      "url": "https://luminablog.vercel.app/",
+      "description": "A high-performance modern editorial blog platform with live SEO analytics, Schema.org JSON-LD generation, and deep-dive technical insights.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Lumina",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=512&h=512&q=80"
+        }
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://luminablog.vercel.app/?search={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+  </head>
+  <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 antialiased selection:bg-indigo-500 selection:text-white transition-colors duration-200">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

@@ -1,0 +1,7 @@
+# robots.txt for Lumina Publishing Platform
+User-agent: *
+Allow: /
+
+# Canonical host and sitemap specification for search engine crawlers
+Host: luminablog.vercel.app
+Sitemap: https://luminablog.vercel.app/sitemap.xml

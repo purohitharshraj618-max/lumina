@@ -1,0 +1,10 @@
+# Vercel deployment ignore rules
+node_modules
+.git
+.gitignore
+.env
+.env.local
+.env.*.local
+dist
+.DS_Store
+Thumbs.db

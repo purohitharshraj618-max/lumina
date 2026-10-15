@@ -1,0 +1,6 @@
+{
+  "name": "Lumina – Modern High-Performance Editorial Blog & SEO Publishing Suite",
+  "description": "A high-performance modern editorial blog platform with live SEO analytics, Schema.org JSON-LD generation, SERP previews, and one-click Vercel deployment readiness.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
