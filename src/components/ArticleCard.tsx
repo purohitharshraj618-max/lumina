@@ -1,6 +1,6 @@
 import React from 'react';
 import { BlogPost } from '../types/blog';
-import { Bookmark, Clock, Eye, Heart, Sparkles, ShieldCheck, ArrowRight } from 'lucide-react';
+import { Bookmark, Clock, Eye, Heart, Sparkles, ShieldCheck, ArrowRight, HelpCircle } from 'lucide-react';
 
 interface ArticleCardProps {
   post: BlogPost;
@@ -25,44 +25,54 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
     year: 'numeric',
   });
 
+  // Descriptive anchor text generator for internal link equity (NO "Read more" or "Click here")
+  const descriptiveActionLabel = `Explore ${post.title.split(':')[0]} architectural study`;
+
   if (variant === 'featured') {
     return (
       <article
         onClick={() => onSelect(post)}
-        className="group relative cursor-pointer overflow-hidden rounded-3xl border border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-slate-900/60 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-indigo-500/50"
+        className="group relative cursor-pointer overflow-hidden rounded-3xl border border-stone-200/90 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-md hover:shadow-xl transition-all duration-300 hover:border-stone-400 dark:hover:border-zinc-700"
       >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
-          {/* Cover Image */}
-          <div className="lg:col-span-7 relative h-64 sm:h-80 lg:h-full min-h-[320px] overflow-hidden">
+          {/* Cover Image with explicit width/height and responsive WebP loading */}
+          <div className="lg:col-span-7 relative h-72 sm:h-88 lg:h-full min-h-[340px] overflow-hidden bg-stone-100 dark:bg-zinc-800">
             <img
               src={post.coverImage}
               alt={post.coverImageAlt}
+              width={post.coverImageWidth || 1200}
+              height={post.coverImageHeight || 800}
               className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               loading="eager"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent lg:hidden" />
+            <div className="absolute inset-0 bg-gradient-to-t from-stone-950/70 via-transparent to-transparent lg:hidden" />
             
-            {/* Category Badge overlay on image */}
+            {/* Category and AEO Badges */}
             <div className="absolute top-4 left-4 flex flex-wrap gap-2">
-              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/90 dark:bg-slate-950/90 backdrop-blur-md text-indigo-600 dark:text-indigo-400 border border-white/20 shadow-sm">
+              <span className="px-3 py-1 rounded-full text-xs font-medium tracking-wide uppercase bg-stone-900/90 text-stone-100 dark:bg-stone-100/90 dark:text-stone-900 backdrop-blur-md shadow-xs">
                 {post.category}
               </span>
-              <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-amber-500/90 text-white backdrop-blur-md flex items-center gap-1 shadow-sm">
-                <Sparkles className="w-3 h-3" /> Featured Story
+              <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-amber-700/90 text-white backdrop-blur-md flex items-center gap-1 shadow-xs">
+                <Sparkles className="w-3 h-3" /> Lead Study
               </span>
+              {post.aeoQuestions && (
+                <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-800/90 text-white backdrop-blur-md flex items-center gap-1 shadow-xs">
+                  <HelpCircle className="w-3 h-3" /> AEO Verified
+                </span>
+              )}
             </div>
           </div>
 
-          {/* Content details */}
+          {/* Editorial Content */}
           <div className="lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col justify-between">
             <div>
-              <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-3">
+              <div className="flex items-center justify-between text-xs text-stone-500 dark:text-zinc-400 mb-3 font-mono">
                 <div className="flex items-center gap-2">
                   <span>{formattedDate}</span>
                   <span>•</span>
                   <span className="flex items-center gap-1">
                     <Clock className="w-3.5 h-3.5" />
-                    {post.readingTimeMinutes} min read
+                    {post.readingTimeMinutes} min study
                   </span>
                 </div>
 
@@ -70,7 +80,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
                   {onInspectSeo && (
                     <button
                       onClick={(e) => onInspectSeo(post, e)}
-                      title="Inspect SEO score"
+                      title="Inspect On-Page SEO & AEO score"
                       className="p-1.5 rounded-lg text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/50 transition-colors"
                     >
                       <ShieldCheck className="w-4 h-4" />
@@ -78,11 +88,11 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
                   )}
                   <button
                     onClick={(e) => onToggleBookmark(post.id, e)}
-                    title={isBookmarked ? 'Remove bookmark' : 'Save article'}
+                    title={isBookmarked ? 'Remove saved publication' : 'Save publication to reading queue'}
                     className={`p-1.5 rounded-lg transition-colors ${
                       isBookmarked
-                        ? 'text-indigo-600 bg-indigo-50 dark:bg-indigo-950'
-                        : 'text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'
+                        ? 'text-amber-800 bg-amber-50 dark:bg-amber-950/60 dark:text-amber-300'
+                        : 'text-stone-400 hover:text-stone-700 dark:hover:text-zinc-200 hover:bg-stone-100 dark:hover:bg-zinc-800'
                     }`}
                   >
                     <Bookmark className={`w-4 h-4 ${isBookmarked ? 'fill-current' : ''}`} />
@@ -90,11 +100,12 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
                 </div>
               </div>
 
-              <h2 className="font-editorial text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                {post.title}
+              {/* Sub-headline on homepage cards (H2 is reserved for sections; cards use h2 or h3) */}
+              <h2 className="font-editorial text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 dark:text-stone-100 group-hover:text-amber-800 dark:group-hover:text-amber-300 transition-colors leading-snug">
+                {post.title.replace(' | KURA', '')}
               </h2>
 
-              <p className="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-300 line-clamp-3 leading-relaxed">
+              <p className="mt-3 text-sm sm:text-base text-stone-600 dark:text-zinc-300 line-clamp-3 leading-relaxed font-editorial">
                 {post.excerpt}
               </p>
 
@@ -103,7 +114,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
                 {post.tags.slice(0, 3).map((tag) => (
                   <span
                     key={tag}
-                    className="text-[11px] font-medium px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+                    className="text-[11px] font-mono px-2 py-0.5 rounded-md bg-stone-100 dark:bg-zinc-800 text-stone-600 dark:text-zinc-400"
                   >
                     #{tag}
                   </span>
@@ -111,26 +122,30 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
               </div>
             </div>
 
-            {/* Author Footer */}
-            <div className="mt-6 pt-6 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            {/* Author & Descriptive Link Footer */}
+            <div className="mt-6 pt-6 border-t border-stone-100 dark:border-zinc-800 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <img
                   src={post.author.avatar}
                   alt={post.author.name}
-                  className="w-10 h-10 rounded-full object-cover ring-2 ring-indigo-500/30"
+                  width={40}
+                  height={40}
+                  className="w-10 h-10 rounded-full object-cover ring-1 ring-stone-300 dark:ring-zinc-700"
                 />
                 <div>
-                  <div className="text-sm font-semibold text-slate-900 dark:text-white">
+                  <div className="text-sm font-semibold text-stone-900 dark:text-stone-100">
                     {post.author.name}
                   </div>
-                  <div className="text-xs text-slate-500 dark:text-slate-400">
+                  <div className="text-xs text-stone-500 dark:text-zinc-400">
                     {post.author.title.split('&')[0]}
                   </div>
                 </div>
               </div>
 
-              <span className="inline-flex items-center gap-1 text-sm font-medium text-indigo-600 dark:text-indigo-400 group-hover:translate-x-1 transition-transform">
-                Read story <ArrowRight className="w-4 h-4" />
+              {/* DESCRIPTIVE ANCHOR TEXT (No "Read more" or "Click here") */}
+              <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-stone-900 dark:text-stone-100 group-hover:translate-x-1 transition-transform group-hover:text-amber-800 dark:group-hover:text-amber-300">
+                <span>{descriptiveActionLabel}</span>
+                <ArrowRight className="w-4 h-4" />
               </span>
             </div>
           </div>
@@ -143,28 +158,30 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
     return (
       <article
         onClick={() => onSelect(post)}
-        className="group flex gap-4 items-start p-3 rounded-2xl hover:bg-slate-100/70 dark:hover:bg-slate-800/50 cursor-pointer transition-colors"
+        className="group flex gap-4 items-start p-3.5 rounded-2xl hover:bg-stone-100/70 dark:hover:bg-zinc-800/50 cursor-pointer transition-colors border border-transparent hover:border-stone-200 dark:hover:border-zinc-800"
       >
         <img
           src={post.coverImage}
           alt={post.coverImageAlt}
-          className="w-20 h-20 rounded-xl object-cover shrink-0"
+          width={96}
+          height={96}
+          className="w-24 h-24 rounded-xl object-cover shrink-0 bg-stone-100 dark:bg-zinc-800"
         />
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400 mb-1">
-            <span className="font-semibold text-indigo-600 dark:text-indigo-400">
+          <div className="flex items-center gap-2 text-[11px] text-stone-500 dark:text-zinc-400 mb-1 font-mono">
+            <span className="font-semibold uppercase text-stone-900 dark:text-stone-100">
               {post.category}
             </span>
             <span>•</span>
             <span>{post.readingTimeMinutes} min</span>
           </div>
-          <h4 className="text-sm font-semibold text-slate-900 dark:text-white line-clamp-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-            {post.title}
-          </h4>
-          <div className="flex items-center justify-between mt-2 text-xs text-slate-400">
+          <h3 className="text-sm font-semibold text-stone-900 dark:text-stone-100 line-clamp-2 group-hover:text-amber-800 dark:group-hover:text-amber-300 transition-colors leading-snug">
+            {post.title.replace(' | KURA', '')}
+          </h3>
+          <div className="flex items-center justify-between mt-2 text-xs text-stone-400">
             <span>{post.author.name}</span>
-            <span className="flex items-center gap-1 text-slate-400">
-              <Heart className="w-3 h-3 text-pink-500" /> {post.claps}
+            <span className="font-medium text-stone-700 dark:text-zinc-300 text-[11px] group-hover:underline">
+              {descriptiveActionLabel} &rarr;
             </span>
           </div>
         </div>
@@ -176,19 +193,21 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
   return (
     <article
       onClick={() => onSelect(post)}
-      className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-slate-900/60 shadow-sm hover:shadow-md transition-all duration-300 hover:border-indigo-500/40 cursor-pointer"
+      className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-stone-200/90 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-xs hover:shadow-md transition-all duration-300 hover:border-stone-400 dark:hover:border-zinc-700 cursor-pointer"
     >
       <div>
-        {/* Card Header & Image */}
-        <div className="relative h-48 overflow-hidden bg-slate-100 dark:bg-slate-800">
+        {/* Card Header & Responsive Image with explicit width/height */}
+        <div className="relative h-52 overflow-hidden bg-stone-100 dark:bg-zinc-800">
           <img
             src={post.coverImage}
             alt={post.coverImageAlt}
+            width={post.coverImageWidth || 600}
+            height={post.coverImageHeight || 400}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
           />
-          <div className="absolute top-3 left-3">
-            <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-white/90 dark:bg-slate-950/90 backdrop-blur-md text-indigo-600 dark:text-indigo-400 border border-white/20 shadow-sm">
+          <div className="absolute top-3 left-3 flex gap-1.5">
+            <span className="px-2.5 py-1 rounded-full text-[11px] font-medium uppercase tracking-wider bg-stone-900/90 text-stone-100 dark:bg-stone-100/90 dark:text-stone-900 backdrop-blur-md shadow-xs">
               {post.category}
             </span>
           </div>
@@ -197,17 +216,17 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
             {onInspectSeo && (
               <button
                 onClick={(e) => onInspectSeo(post, e)}
-                title="Inspect SEO score"
-                className="p-1.5 rounded-full bg-white/90 dark:bg-slate-950/90 text-emerald-600 dark:text-emerald-400 hover:scale-110 transition-transform shadow-sm"
+                title="Inspect SEO and AEO schema"
+                className="p-1.5 rounded-full bg-white/90 dark:bg-zinc-900/90 text-emerald-600 dark:text-emerald-400 hover:scale-110 transition-transform shadow-xs"
               >
                 <ShieldCheck className="w-3.5 h-3.5" />
               </button>
             )}
             <button
               onClick={(e) => onToggleBookmark(post.id, e)}
-              title={isBookmarked ? 'Remove bookmark' : 'Save article'}
-              className={`p-1.5 rounded-full bg-white/90 dark:bg-slate-950/90 shadow-sm transition-transform hover:scale-110 ${
-                isBookmarked ? 'text-indigo-600' : 'text-slate-400 hover:text-slate-700'
+              title={isBookmarked ? 'Remove saved publication' : 'Save publication'}
+              className={`p-1.5 rounded-full bg-white/90 dark:bg-zinc-900/90 shadow-xs transition-transform hover:scale-110 ${
+                isBookmarked ? 'text-amber-800 dark:text-amber-300' : 'text-stone-400 hover:text-stone-700'
               }`}
             >
               <Bookmark className={`w-3.5 h-3.5 ${isBookmarked ? 'fill-current' : ''}`} />
@@ -217,25 +236,20 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
 
         {/* Post Summary Body */}
         <div className="p-5 sm:p-6">
-          <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-2">
+          <div className="flex items-center gap-2 text-xs text-stone-500 dark:text-zinc-400 mb-2 font-mono">
             <span>{formattedDate}</span>
             <span>•</span>
             <span className="flex items-center gap-1">
               <Clock className="w-3 h-3" />
-              {post.readingTimeMinutes} min
-            </span>
-            <span>•</span>
-            <span className="flex items-center gap-1">
-              <Eye className="w-3 h-3" />
-              {post.views.toLocaleString()}
+              {post.readingTimeMinutes} min study
             </span>
           </div>
 
-          <h3 className="font-editorial text-xl font-bold tracking-tight text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors line-clamp-2">
-            {post.title}
+          <h3 className="font-editorial text-xl font-bold tracking-tight text-stone-900 dark:text-stone-100 group-hover:text-amber-800 dark:group-hover:text-amber-300 transition-colors line-clamp-2 leading-snug">
+            {post.title.replace(' | KURA', '')}
           </h3>
 
-          <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-2 leading-relaxed">
+          <p className="mt-2 text-sm text-stone-600 dark:text-zinc-300 line-clamp-2 leading-relaxed font-editorial">
             {post.excerpt}
           </p>
 
@@ -243,7 +257,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
             {post.tags.slice(0, 3).map((tag) => (
               <span
                 key={tag}
-                className="text-[11px] font-medium px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+                className="text-[11px] font-mono px-2 py-0.5 rounded bg-stone-100 dark:bg-zinc-800 text-stone-600 dark:text-zinc-400"
               >
                 #{tag}
               </span>
@@ -252,22 +266,25 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         </div>
       </div>
 
-      {/* Card Author Footer */}
-      <div className="px-5 sm:px-6 py-4 border-t border-slate-100 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900/30 flex items-center justify-between">
-        <div className="flex items-center gap-2.5">
+      {/* Card Author Footer with Descriptive Anchor Text */}
+      <div className="px-5 sm:px-6 py-3.5 border-t border-stone-100 dark:border-zinc-800 bg-stone-50/60 dark:bg-zinc-900/40 flex items-center justify-between">
+        <div className="flex items-center gap-2">
           <img
             src={post.author.avatar}
             alt={post.author.name}
+            width={28}
+            height={28}
             className="w-7 h-7 rounded-full object-cover"
           />
-          <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">
+          <span className="text-xs font-medium text-stone-700 dark:text-zinc-300">
             {post.author.name}
           </span>
         </div>
 
-        <span className="flex items-center gap-1 text-xs font-medium text-pink-600 dark:text-pink-400">
-          <Heart className="w-3.5 h-3.5 fill-pink-500/20" />
-          {post.claps}
+        {/* DESCRIPTIVE ANCHOR TEXT (No "Read more" or "Click here") */}
+        <span className="text-xs font-semibold text-stone-900 dark:text-stone-100 group-hover:text-amber-800 dark:group-hover:text-amber-300 flex items-center gap-1">
+          <span>{descriptiveActionLabel}</span>
+          <ArrowRight className="w-3.5 h-3.5" />
         </span>
       </div>
     </article>

@@ -2,43 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://luminablog.vercel.app/</loc>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://luminablog.vercel.app/#post/modern-seo-playbook-web-apps</loc>
-    <lastmod>2026-04-02</lastmod>
+    <loc>https://luminablog.vercel.app/architecture/modern-kyoto-machiya</loc>
+    <lastmod>2026-04-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://luminablog.vercel.app/#post/deploying-modern-spas-on-vercel</loc>
-    <lastmod>2026-03-29</lastmod>
+    <loc>https://luminablog.vercel.app/materials/microcement-lime-wash-surfaces</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://luminablog.vercel.app/#post/mastering-modern-frontend-architecture</loc>
-    <lastmod>2026-03-21</lastmod>
+    <loc>https://luminablog.vercel.app/millwork/flush-joinery-concealed-storage</loc>
+    <lastmod>2026-04-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://luminablog.vercel.app/#post/designing-resilient-design-systems</loc>
-    <lastmod>2026-03-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://luminablog.vercel.app/#post/building-llm-powered-workflows-latency</loc>
-    <lastmod>2026-03-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://luminablog.vercel.app/#post/high-throughput-distributed-state-crdts</loc>
-    <lastmod>2026-02-25</lastmod>
+    <loc>https://luminablog.vercel.app/philosophy/warm-scandinavian-reduction</loc>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

@@ -21,39 +21,32 @@ interface PostEditorModalProps {
 }
 
 const CATEGORIES: Category[] = [
-  'Engineering',
-  'Artificial Intelligence',
-  'System Architecture',
-  'Design Systems',
-  'SEO & Performance',
-  'Cloud & DevOps',
+  'Architecture',
+  'Materials',
+  'Millwork',
+  'Philosophy',
 ];
 
 const PRESET_COVERS = [
   {
-    label: 'Architecture & Code',
-    url: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&h=630&q=80',
-    alt: 'Clean lines of code displayed on multiple high-resolution developer monitors',
+    label: 'Kyoto Machiya Architecture',
+    url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&h=800&q=80',
+    alt: 'Restored modern Kyoto machiya courtyard with charred cedar screens and moss garden',
   },
   {
-    label: 'SEO & Analytics',
-    url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&h=630&q=80',
-    alt: 'Modern data analytics dashboard showing SEO traffic growth and performance metrics',
+    label: 'Tactile Mineral Surfaces',
+    url: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&h=800&q=80',
+    alt: 'Tactile minimalist bathroom with seamless bone microcement floor and lime wash walls',
   },
   {
-    label: 'AI & Neural Nets',
-    url: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&h=630&q=80',
-    alt: 'Abstract 3D digital neural network visualization glowing with iridescent cyan and purple gradients',
+    label: 'Flush Joinery Millwork',
+    url: 'https://images.unsplash.com/photo-1541123437800-1bb1317badc2?auto=format&fit=crop&w=1200&h=800&q=80',
+    alt: 'Sequence matched white oak architectural millwork with concealed touch latches and shadow gaps',
   },
   {
-    label: 'Cloud & Infrastructure',
-    url: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&h=630&q=80',
-    alt: 'Modern server infrastructure glowing with fiber optic connectivity representing edge network',
-  },
-  {
-    label: 'Design & Workspace',
-    url: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&h=630&q=80',
-    alt: 'Minimalist designer desk with color swatches, typography specimens, and digital tablets',
+    label: 'Warm Scandinavian Reduction',
+    url: 'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=1200&h=800&q=80',
+    alt: 'Serene warm Scandinavian dining room with soap finished white oak table and indirect natural light',
   },
 ];
 
@@ -72,8 +65,8 @@ export const PostEditorModal: React.FC<PostEditorModalProps> = ({
     initialPost?.content ||
       `## 1. Introduction {#introduction}\n\nStart authoring your technical insights here...\n\n> "Add an editorial pull quote here."\n\n## 2. Key Architecture Details {#architecture}\n\nBreak your article into structured H2 sections for maximum search engine crawlability.\n\n\`\`\`typescript\n// Example code snippet\nfunction calculatePerformance(metric: string): number {\n  return performance.now();\n}\n\`\`\`\n\n:::tip\nAdd actionable engineering tips using :::tip or :::note blocks!\n:::\n`
   );
-  const [category, setCategory] = React.useState<Category>(initialPost?.category || 'Engineering');
-  const [tagsInput, setTagsInput] = React.useState(initialPost?.tags.join(', ') || 'React, Performance, WebDev');
+  const [category, setCategory] = React.useState<Category>(initialPost?.category || 'Architecture');
+  const [tagsInput, setTagsInput] = React.useState(initialPost?.tags.join(', ') || 'Architecture, Materials, Minimalist');
   const [coverImage, setCoverImage] = React.useState(initialPost?.coverImage || PRESET_COVERS[0].url);
   const [coverImageAlt, setCoverImageAlt] = React.useState(initialPost?.coverImageAlt || PRESET_COVERS[0].alt);
   
@@ -135,18 +128,24 @@ export const PostEditorModal: React.FC<PostEditorModalProps> = ({
         };
       });
 
+    const postSlug = slug || title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    const cleanRoute = `/${category.toLowerCase()}/${postSlug}`;
+
     const newPost: BlogPost = {
       id: initialPost?.id || `post-${Date.now()}`,
-      slug: slug || title.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+      slug: postSlug,
+      routePath: cleanRoute,
       title,
       subtitle: subtitle || excerpt,
       excerpt: excerpt || title,
       content,
       coverImage,
       coverImageAlt: coverImageAlt || title,
+      coverImageWidth: 1200,
+      coverImageHeight: 800,
       category,
-      tags: tags.length > 0 ? tags : ['Technology'],
-      author: initialPost?.author || INITIAL_AUTHORS.elena,
+      tags: tags.length > 0 ? tags : ['Architecture'],
+      author: initialPost?.author || INITIAL_AUTHORS.kenzo,
       publishedAt: initialPost?.publishedAt || new Date().toISOString(),
       updatedAt: new Date().toISOString(),
       readingTimeMinutes: readingTime,
@@ -159,7 +158,7 @@ export const PostEditorModal: React.FC<PostEditorModalProps> = ({
         metaTitle: effectiveMetaTitle,
         metaDescription: effectiveMetaDesc,
         keywords: tags,
-        canonicalUrl: `${DEFAULT_BASE_URL}/#post/${slug}`,
+        canonicalUrl: `${DEFAULT_BASE_URL}${cleanRoute}`,
         ogImage: coverImage,
         twitterCardType: 'summary_large_image',
         structuredDataType: 'BlogPosting',

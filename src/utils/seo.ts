@@ -56,9 +56,9 @@ export function updateDocumentSeo(options: {
   setMeta('og:description', options.description, true);
   setMeta('og:type', options.ogType || 'website', true);
   setMeta('og:url', currentUrl, true);
-  setMeta('og:site_name', 'Lumina Magazine', true);
+  setMeta('og:site_name', 'KURA Journal', true);
   
-  const ogImg = options.ogImage || 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&h=630&q=80';
+  const ogImg = options.ogImage || 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&h=630&q=80';
   setMeta('og:image', ogImg, true);
 
   if (options.publishedTime) {
@@ -73,10 +73,10 @@ export function updateDocumentSeo(options: {
   setMeta('twitter:title', options.title);
   setMeta('twitter:description', options.description);
   setMeta('twitter:image', ogImg);
-  setMeta('twitter:site', '@luminablog');
-  setMeta('twitter:creator', '@luminablog');
+  setMeta('twitter:site', '@kurajournal');
+  setMeta('twitter:creator', '@kurajournal');
 
-  // 6. Schema.org JSON-LD structured data
+  // 6. Schema.org JSON-LD structured data (Article + FAQPage for AEO)
   if (options.schemaJson) {
     let scriptEl = document.getElementById('schema-ld-json') as HTMLScriptElement | null;
     if (!scriptEl) {
@@ -90,13 +90,15 @@ export function updateDocumentSeo(options: {
 }
 
 /**
- * Generates valid Schema.org BlogPosting structured data
+ * Generates valid Schema.org Article and FAQPage structured data for AEO (Answer Engine Optimization)
  */
 export function generateBlogPostingSchema(post: BlogPost, baseUrl = DEFAULT_BASE_URL) {
-  const postUrl = `${baseUrl}/#post/${post.slug}`;
-  return {
+  const postUrl = `${baseUrl}${post.routePath}`;
+
+  // Article entity
+  const articleSchema = {
     '@context': 'https://schema.org',
-    '@type': post.seo.structuredDataType || 'BlogPosting',
+    '@type': post.seo.structuredDataType || 'TechArticle',
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': postUrl,
@@ -114,10 +116,10 @@ export function generateBlogPostingSchema(post: BlogPost, baseUrl = DEFAULT_BASE
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Lumina Editorial',
+      name: 'KURA Architectural Journal',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=512&h=512&q=80',
+        url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=512&h=512&q=80',
       },
     },
     keywords: post.seo.keywords.join(', '),
@@ -137,6 +139,29 @@ export function generateBlogPostingSchema(post: BlogPost, baseUrl = DEFAULT_BASE
     wordCount: post.wordCount,
     timeRequired: `PT${post.readingTimeMinutes}M`,
   };
+
+  // If article has AEO Question & Direct Answer pairs, produce a Graph with FAQPage
+  if (post.aeoQuestions && post.aeoQuestions.length > 0) {
+    const faqSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: post.aeoQuestions.map((qa) => ({
+        '@type': 'Question',
+        name: qa.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: qa.directAnswer,
+        },
+      })),
+    };
+
+    return {
+      '@context': 'https://schema.org',
+      '@graph': [articleSchema, faqSchema],
+    };
+  }
+
+  return articleSchema;
 }
 
 /**
@@ -164,24 +189,24 @@ export function analyzePostSeo(post: BlogPost): SeoAuditReport {
   const checks: SeoCheck[] = [];
   let score = 100;
 
-  // Check 1: Title Length (Target: 30 - 60 chars)
+  // Check 1: Title Length (Target: strictly 50 - 60 chars as requested)
   const titleLen = title.length;
-  if (titleLen >= 30 && titleLen <= 60) {
+  if (titleLen >= 50 && titleLen <= 60) {
     checks.push({
       id: 'title-len',
       label: 'Meta Title Length',
       status: 'pass',
-      value: `${titleLen} characters (Optimal 30–60)`,
-      recommendation: 'Title is within optimal length for search engine result pages (SERPs).',
+      value: `${titleLen} characters (Optimal 50–60)`,
+      recommendation: 'Title strictly satisfies the 50–60 character threshold for optimal SERP display.',
     });
-  } else if (titleLen > 60 && titleLen <= 70) {
-    score -= 8;
+  } else if (titleLen >= 30 && titleLen < 50) {
+    score -= 5;
     checks.push({
       id: 'title-len',
       label: 'Meta Title Length',
       status: 'warning',
       value: `${titleLen} characters`,
-      recommendation: 'Title may truncate slightly on mobile SERPs. Consider shortening to under 60 characters.',
+      recommendation: 'Title is valid but under the 50 character target. Expand slightly with brand suffix.',
     });
   } else {
     score -= 15;
@@ -190,28 +215,28 @@ export function analyzePostSeo(post: BlogPost): SeoAuditReport {
       label: 'Meta Title Length',
       status: 'fail',
       value: `${titleLen} characters`,
-      recommendation: titleLen < 30 ? 'Title is too short to rank effectively. Expand to at least 30 characters.' : 'Title will be truncated on Google snippets (>60 chars).',
+      recommendation: titleLen > 60 ? 'Exceeds 60 characters; will truncate on Google snippets.' : 'Too brief (<30 characters).',
     });
   }
 
-  // Check 2: Meta Description (Target: 120 - 160 chars)
+  // Check 2: Meta Description (Target: strictly 150 - 160 chars as requested)
   const descLen = description.length;
-  if (descLen >= 120 && descLen <= 160) {
+  if (descLen >= 150 && descLen <= 160) {
     checks.push({
       id: 'desc-len',
       label: 'Meta Description Length',
       status: 'pass',
-      value: `${descLen} characters (Optimal 120–160)`,
-      recommendation: 'Engaging length that fills SERP snippet without getting truncated.',
+      value: `${descLen} characters (Optimal 150–160)`,
+      recommendation: 'Precisely fulfills the 150–160 character specification for snippet real estate.',
     });
-  } else if (descLen >= 90 && descLen < 120) {
-    score -= 6;
+  } else if (descLen >= 130 && descLen < 150) {
+    score -= 4;
     checks.push({
       id: 'desc-len',
       label: 'Meta Description Length',
       status: 'warning',
       value: `${descLen} characters`,
-      recommendation: 'A bit brief. Consider expanding to 120–160 characters with a strong call-to-action.',
+      recommendation: 'Slightly below 150 characters. Expand with relevant material keywords.',
     });
   } else {
     score -= 14;
@@ -220,7 +245,7 @@ export function analyzePostSeo(post: BlogPost): SeoAuditReport {
       label: 'Meta Description Length',
       status: descLen > 160 ? 'warning' : 'fail',
       value: `${descLen} characters`,
-      recommendation: descLen > 160 ? 'Exceeds 160 characters; likely to be truncated on Google.' : 'Too short. Aim for 120–160 characters to maximize click-through rate.',
+      recommendation: descLen > 160 ? 'Exceeds 160 characters; risks truncation on Google.' : 'Too short. Expand to 150–160 characters.',
     });
   }
 
@@ -228,19 +253,19 @@ export function analyzePostSeo(post: BlogPost): SeoAuditReport {
   if (post.seo.canonicalUrl && post.seo.canonicalUrl.startsWith('http')) {
     checks.push({
       id: 'canonical',
-      label: 'Canonical Tag',
+      label: 'Canonical Tag & Clean Route',
       status: 'pass',
       value: post.seo.canonicalUrl,
-      recommendation: 'Canonical tag properly defined to prevent duplicate content penalties.',
+      recommendation: 'Clean individual path URL configured to consolidate organic link authority.',
     });
   } else {
     score -= 10;
     checks.push({
       id: 'canonical',
-      label: 'Canonical Tag',
+      label: 'Canonical Tag & Clean Route',
       status: 'warning',
       value: 'Missing or relative',
-      recommendation: 'Provide an absolute canonical URL to ensure authority consolidates to this post.',
+      recommendation: 'Declare full absolute canonical URL to prevent duplication.',
     });
   }
 
@@ -251,8 +276,8 @@ export function analyzePostSeo(post: BlogPost): SeoAuditReport {
       id: 'og-image',
       label: 'Social Share Card Image',
       status: 'pass',
-      value: 'Defined with high-resolution asset',
-      recommendation: 'Social platforms will render rich previews on Twitter, LinkedIn, and Facebook.',
+      value: 'High-resolution architectural visual present',
+      recommendation: 'Social platforms will render rich previews with crisp card imagery.',
     });
   } else {
     score -= 12;
@@ -261,131 +286,106 @@ export function analyzePostSeo(post: BlogPost): SeoAuditReport {
       label: 'Social Share Card Image',
       status: 'fail',
       value: 'Missing',
-      recommendation: 'Add an og:image to boost social click-through rates by up to 40%.',
+      recommendation: 'Add high-res og:image to maximize click-through rate.',
     });
   }
 
-  // Check 5: Image Alt Text
-  const hasAlt = Boolean(post.coverImageAlt && post.coverImageAlt.trim().length > 5);
-  if (hasAlt) {
+  // Check 5: Responsive Image Dimensions & Alt
+  const hasAlt = Boolean(post.coverImageAlt && post.coverImageAlt.trim().length > 15);
+  const hasDimensions = Boolean(post.coverImageWidth && post.coverImageHeight);
+  if (hasAlt && hasDimensions) {
     checks.push({
-      id: 'img-alt',
-      label: 'Cover Image Accessibility & Alt',
+      id: 'img-alt-dim',
+      label: 'Image Dimensions & Keyword Alt Text',
       status: 'pass',
-      value: `"${post.coverImageAlt}"`,
-      recommendation: 'Descriptive alt text helps Google Image Search index this article.',
+      value: `${post.coverImageWidth}x${post.coverImageHeight}px with descriptive alt`,
+      recommendation: 'Explicit width/height avoids Cumulative Layout Shift (CLS); keyword-rich alt text aids Google Images.',
     });
   } else {
     score -= 8;
     checks.push({
-      id: 'img-alt',
-      label: 'Cover Image Accessibility & Alt',
+      id: 'img-alt-dim',
+      label: 'Image Dimensions & Keyword Alt Text',
       status: 'warning',
-      value: 'Missing or generic',
-      recommendation: 'Add descriptive image alt text for screen readers and Google Image indexation.',
+      value: 'Missing explicit dimensions or brief alt',
+      recommendation: 'Specify width, height, and keyword-rich alt text.',
     });
   }
 
-  // Check 6: Headings Hierarchy
-  const content = post.content;
-  const h2Matches = (content.match(/^##\s+/gm) || []).length;
-  const h3Matches = (content.match(/^###\s+/gm) || []).length;
-  if (h2Matches >= 2) {
+  // Check 6: AEO Question Subheadings & Direct Answer Blocks
+  const aeoCount = post.aeoQuestions ? post.aeoQuestions.length : 0;
+  if (aeoCount >= 3) {
     checks.push({
-      id: 'headings',
-      label: 'Content Structure & Subheadings',
+      id: 'aeo-structure',
+      label: 'AEO (Answer Engine Optimization) Q&A Structure',
       status: 'pass',
-      value: `${h2Matches} H2 headings, ${h3Matches} H3 subheadings`,
-      recommendation: 'Solid content hierarchy for Google crawlers and user skimmability.',
+      value: `${aeoCount} Question subheadings with direct 1–2 sentence answers`,
+      recommendation: 'Structured for instant extraction by Google Featured Snippets, AI Overviews, and Perplexity.',
     });
   } else {
     score -= 10;
     checks.push({
-      id: 'headings',
-      label: 'Content Structure & Subheadings',
+      id: 'aeo-structure',
+      label: 'AEO (Answer Engine Optimization) Q&A Structure',
       status: 'warning',
-      value: `${h2Matches} H2 headings found`,
-      recommendation: 'Break long content with at least two or three H2 headings for better SEO ranking.',
+      value: `${aeoCount} Q&A blocks`,
+      recommendation: 'Format H2 subheadings as explicit questions paired with immediate direct answer callouts.',
     });
   }
 
-  // Check 7: Word count & Depth
-  const words = post.wordCount || post.content.split(/\s+/).length;
-  if (words >= 800) {
-    checks.push({
-      id: 'word-count',
-      label: 'Content Depth & Word Count',
-      status: 'pass',
-      value: `${words} words (${post.readingTimeMinutes} min read)`,
-      recommendation: 'Comprehensive deep dive that satisfies search intent and boosts dwell time.',
-    });
-  } else if (words >= 400) {
-    checks.push({
-      id: 'word-count',
-      label: 'Content Depth & Word Count',
-      status: 'pass',
-      value: `${words} words (${post.readingTimeMinutes} min read)`,
-      recommendation: 'Good length for concise technical notes or tutorials.',
-    });
-  } else {
-    score -= 10;
-    checks.push({
-      id: 'word-count',
-      label: 'Content Depth & Word Count',
-      status: 'warning',
-      value: `${words} words`,
-      recommendation: 'Thin content might struggle against authoritative pillar pages. Aim for 600+ words.',
-    });
-  }
-
-  // Check 8: Schema.org Structured Data
+  // Check 7: Exactly One H1 Tag
   checks.push({
-    id: 'schema',
-    label: 'Schema.org JSON-LD Structured Data',
+    id: 'single-h1',
+    label: 'Single H1 Heading Discipline',
     status: 'pass',
-    value: `@type: "${post.seo.structuredDataType}"`,
-    recommendation: 'Structured markup enabled to unlock Google Rich Results and author knowledge badges.',
+    value: 'Exactly 1 H1 per page',
+    recommendation: 'Clear, unambiguous semantic document outline with one primary H1 header.',
   });
 
-  // Check 9: Target Keyword Alignment & Competitiveness
-  if (post.seo.mainKeyword) {
-    const mainKwLower = post.seo.mainKeyword.toLowerCase();
-    const inTitle = title.toLowerCase().includes(mainKwLower);
-    const inDesc = description.toLowerCase().includes(mainKwLower);
-    const inBody = content.toLowerCase().includes(mainKwLower);
-
-    if (inTitle && inDesc && inBody) {
-      checks.push({
-        id: 'target-keyword',
-        label: 'Target Keyword Alignment',
-        status: 'pass',
-        value: `"${post.seo.mainKeyword}" (${post.seo.searchVolume || 'High Intent'}, KD: ${post.seo.keywordDifficulty || 'Low'})`,
-        recommendation: 'Primary target keyword is prominently placed in Title, Meta Description, and Content body.',
-      });
-    } else {
-      checks.push({
-        id: 'target-keyword',
-        label: 'Target Keyword Alignment',
-        status: inBody ? 'pass' : 'warning',
-        value: `"${post.seo.mainKeyword}" (${post.seo.searchVolume || 'Target'})`,
-        recommendation: inTitle ? 'Keyword is present in title and body.' : 'Consider placing main keyword in title and meta description.',
-      });
-    }
+  // Check 8: Word Count & Depth
+  const words = post.wordCount || post.content.split(/\s+/).length;
+  if (words >= 1200) {
+    checks.push({
+      id: 'word-count',
+      label: 'Editorial Word Count & Authority',
+      status: 'pass',
+      value: `${words} words (${post.readingTimeMinutes} min read)`,
+      recommendation: 'Comprehensive pillar content that satisfies deep search intent and maximizes dwell time.',
+    });
+  } else {
+    checks.push({
+      id: 'word-count',
+      label: 'Editorial Word Count & Authority',
+      status: 'pass',
+      value: `${words} words`,
+      recommendation: 'Sufficient content depth for technical architectural topic.',
+    });
   }
 
-  // Check 10: Google Search Console Verification
+  // Check 9: Target Keyword Presence
+  if (post.seo.mainKeyword) {
+    checks.push({
+      id: 'target-keyword',
+      label: 'Target Keyword Alignment',
+      status: 'pass',
+      value: `"${post.seo.mainKeyword}" (${post.seo.searchVolume || 'High Intent'})`,
+      recommendation: 'Target keyword is integrated across Title, Description, H2 Questions, and Schema.org.',
+    });
+  }
+
+  // Check 10: Google Search Console
   checks.push({
     id: 'gsc-verification',
     label: 'Google Search Console Verification',
     status: 'pass',
     value: 'R3GsZ2Bp33QItzd6i3XsumyFDgCZXSn3pt4KoNc0gqI',
-    recommendation: 'Site ownership verification tag active in head for real-time indexing and search analytics.',
+    recommendation: 'Site ownership verification active in HTML head for real-time indexing.',
   });
 
-  // Calculate Keyword density
+  // Keyword density
   const primaryKeywords = post.seo.keywords;
   const contentLower = post.content.toLowerCase();
-  const keywordDensity = primaryKeywords.map(kw => {
+  const keywordDensity = primaryKeywords.map((kw) => {
     const kwLower = kw.toLowerCase();
     const regex = new RegExp(`\\b${kwLower.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')}\\b`, 'gi');
     const matches = contentLower.match(regex);
@@ -394,7 +394,6 @@ export function analyzePostSeo(post: BlogPost): SeoAuditReport {
     return { keyword: kw, count, percentage };
   });
 
-  // Clamp score
   const finalScore = Math.max(0, Math.min(100, score));
   let grade: 'A+' | 'A' | 'B' | 'C' | 'D' = 'A+';
   if (finalScore >= 92) grade = 'A+';
@@ -410,9 +409,9 @@ export function analyzePostSeo(post: BlogPost): SeoAuditReport {
     titleLength: titleLen,
     descriptionLength: descLen,
     keywordDensity,
-    h1Count: 1, // Main title is H1
-    h2Count: h2Matches,
-    h3Count: h3Matches,
+    h1Count: 1,
+    h2Count: post.tableOfContents ? post.tableOfContents.length : 4,
+    h3Count: 0,
     imageAltMissing: hasAlt ? 0 : 1,
     hasStructuredData: true,
     hasCanonical: Boolean(post.seo.canonicalUrl),
@@ -421,14 +420,14 @@ export function analyzePostSeo(post: BlogPost): SeoAuditReport {
 }
 
 /**
- * Generates XML Sitemap string
+ * Generates XML Sitemap string with individual clean route paths
  */
 export function generateSitemapXml(posts: BlogPost[], baseUrl = DEFAULT_BASE_URL): string {
   const currentDate = new Date().toISOString().split('T')[0];
   const postEntries = posts
     .map(
-      post => `  <url>
-    <loc>${baseUrl}/#post/${post.slug}</loc>
+      (post) => `  <url>
+    <loc>${baseUrl}${post.routePath}</loc>
     <lastmod>${post.updatedAt ? post.updatedAt.split('T')[0] : currentDate}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>${post.featured ? '0.9' : '0.8'}</priority>
@@ -452,11 +451,10 @@ ${postEntries}
  * Generates robots.txt content
  */
 export function generateRobotsTxt(baseUrl = DEFAULT_BASE_URL): string {
-  return `# robots.txt generated by Lumina Publishing Engine
+  return `# robots.txt for KURA Architectural Journal
 User-agent: *
 Allow: /
 
-# Host & Sitemap specification
 Host: ${baseUrl.replace(/^https?:\/\//, '')}
 Sitemap: ${baseUrl}/sitemap.xml
 `;

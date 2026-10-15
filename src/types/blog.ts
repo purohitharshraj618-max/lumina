@@ -1,11 +1,9 @@
 export type Category = 
   | 'All' 
-  | 'Engineering' 
-  | 'Artificial Intelligence' 
-  | 'System Architecture' 
-  | 'Design Systems' 
-  | 'SEO & Performance'
-  | 'Cloud & DevOps';
+  | 'Architecture' 
+  | 'Materials' 
+  | 'Millwork' 
+  | 'Philosophy';
 
 export interface Author {
   id: string;
@@ -32,6 +30,12 @@ export interface PostSeo {
   structuredDataType: 'BlogPosting' | 'TechArticle';
 }
 
+export interface AeoQuestionAnswer {
+  question: string;
+  directAnswer: string;
+  id: string;
+}
+
 export interface TableOfContentsItem {
   id: string;
   text: string;
@@ -52,12 +56,15 @@ export interface Comment {
 export interface BlogPost {
   id: string;
   slug: string;
+  routePath: string; // e.g., '/architecture/modern-kyoto-machiya'
   title: string;
   subtitle: string;
   excerpt: string;
   content: string;
   coverImage: string;
   coverImageAlt: string;
+  coverImageWidth: number;
+  coverImageHeight: number;
   category: Category;
   tags: string[];
   author: Author;
@@ -72,6 +79,7 @@ export interface BlogPost {
   userClapped?: boolean;
   seo: PostSeo;
   tableOfContents?: TableOfContentsItem[];
+  aeoQuestions?: AeoQuestionAnswer[];
 }
 
 export interface SeoCheck {
@@ -83,7 +91,7 @@ export interface SeoCheck {
 }
 
 export interface SeoAuditReport {
-  score: number; // 0 to 100
+  score: number;
   grade: 'A+' | 'A' | 'B' | 'C' | 'D';
   checks: SeoCheck[];
   titleLength: number;

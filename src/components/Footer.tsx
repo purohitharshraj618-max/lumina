@@ -1,9 +1,10 @@
 import React from 'react';
-import { Sparkles, ShieldCheck, UploadCloud, Check, Send, Globe, Rss } from 'lucide-react';
+import { ShieldCheck, UploadCloud, Check, Send, Globe } from 'lucide-react';
 import { Category } from '../types/blog';
 
 interface FooterProps {
   onSelectCategory: (cat: Category) => void;
+  onNavigateRoute: (routePath: string) => void;
   onOpenSeoInspector: () => void;
   onOpenVercelDeploy: () => void;
   onNavigateHome: () => void;
@@ -11,6 +12,7 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({
   onSelectCategory,
+  onNavigateRoute,
   onOpenSeoInspector,
   onOpenVercelDeploy,
   onNavigateHome,
@@ -27,19 +29,19 @@ export const Footer: React.FC<FooterProps> = ({
   };
 
   return (
-    <footer className="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 transition-colors">
-      {/* Newsletter Banner */}
-      <div className="border-b border-slate-200/80 dark:border-slate-800/80 bg-slate-50/70 dark:bg-slate-900/40">
+    <footer className="border-t border-stone-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 transition-colors">
+      {/* Newsletter Dispatch */}
+      <div className="border-b border-stone-200 dark:border-zinc-800 bg-stone-50/60 dark:bg-zinc-900/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="max-w-2xl mx-auto text-center">
-            <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
-              The Lumina Digest
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-stone-500 dark:text-zinc-400">
+              The KURA Architectural Dispatch
             </span>
-            <h3 className="font-editorial text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mt-1">
-              Architectural insights delivered to your inbox
+            <h3 className="font-editorial text-2xl sm:text-3xl font-bold text-stone-900 dark:text-stone-100 mt-1">
+              Quarterly studies on materiality, joinery, and reduction
             </h3>
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-2">
-              Join 42,000+ senior engineers, architects, and founders receiving our weekly deep dives.
+            <p className="text-xs sm:text-sm text-stone-600 dark:text-zinc-400 mt-2 font-editorial">
+              Join 18,000+ architects, interior designers, and craftsman builders reading our technical monographs.
             </p>
 
             <form onSubmit={handleSubscribe} className="mt-6 flex flex-col sm:flex-row gap-2 max-w-md mx-auto">
@@ -48,20 +50,20 @@ export const Footer: React.FC<FooterProps> = ({
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="developer@company.com"
-                className="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                placeholder="studio@architecture.com"
+                className="flex-1 px-4 py-2.5 rounded-xl border border-stone-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-xs sm:text-sm text-stone-900 dark:text-stone-100 focus:outline-none focus:ring-1 focus:ring-stone-500 font-mono"
               />
               <button
                 type="submit"
-                className="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs sm:text-sm shadow-md transition-all hover:scale-105 active:scale-95"
+                className="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl bg-stone-900 hover:bg-stone-800 text-white dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-stone-200 font-semibold text-xs sm:text-sm shadow-xs transition-all"
               >
-                <Send className="w-4 h-4" /> Subscribe
+                <Send className="w-4 h-4" /> Receive Dispatch
               </button>
             </form>
 
             {subscribed && (
-              <div className="mt-3 p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 text-xs flex items-center justify-center gap-1.5 animate-in fade-in">
-                <Check className="w-4 h-4" /> Welcome aboard! Check your inbox for the latest edition.
+              <div className="mt-3 p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 text-xs flex items-center justify-center gap-1.5 animate-in fade-in">
+                <Check className="w-4 h-4" /> Welcome to KURA. Your subscription has been confirmed.
               </div>
             )}
           </div>
@@ -77,188 +79,168 @@ export const Footer: React.FC<FooterProps> = ({
             <div 
               onClick={onNavigateHome}
               className="flex items-center gap-2 cursor-pointer group"
+              title="Return to KURA journal overview"
             >
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-500 flex items-center justify-center text-white shadow-md">
-                <Sparkles className="w-4 h-4" />
+              <div className="w-7 h-7 rounded bg-stone-900 text-stone-100 dark:bg-stone-100 dark:text-stone-900 flex items-center justify-center text-xs font-mono font-bold">
+                倉
               </div>
-              <span className="font-editorial text-2xl font-bold text-slate-900 dark:text-white">
-                Lumina
+              <span className="font-editorial text-2xl font-bold text-stone-900 dark:text-stone-100 tracking-wider">
+                KURA
               </span>
             </div>
-            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-editorial">
-              A high-performance modern editorial publication covering systems architecture, AI interfaces, and frontend engineering.
+            <p className="text-xs text-stone-500 dark:text-zinc-400 leading-relaxed font-editorial">
+              An architectural research publication documenting heritage Kyoto machiya restoration, monolithic microcement surfaces, precision flush millwork, and warm Scandinavian reduction.
             </p>
             <div className="pt-2 flex items-center gap-2">
-              <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded-md border border-emerald-300/40">
-                <ShieldCheck className="w-3.5 h-3.5" /> 100/100 SEO Score
+              <span className="inline-flex items-center gap-1 text-[11px] font-mono font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded-md border border-emerald-300/40">
+                <ShieldCheck className="w-3.5 h-3.5" /> AEO Verified
               </span>
-              <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded-md">
-                <svg className="w-3 h-3 fill-current" viewBox="0 0 1155 1000">
-                  <path d="m577.3 0 577.4 1000H0z" />
-                </svg>
-                Vercel Ready
+              <span className="inline-flex items-center gap-1 text-[11px] font-mono font-semibold text-stone-700 dark:text-zinc-300 bg-stone-100 dark:bg-zinc-800 px-2 py-0.5 rounded-md">
+                Vercel Edge
               </span>
             </div>
           </div>
 
-          {/* Col 2: Topics */}
+          {/* Col 2: Core Publications with Descriptive Internal Link Anchors */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-3">
-              Editorial Topics
+            <h4 className="text-xs font-bold uppercase tracking-wider text-stone-900 dark:text-stone-100 mb-3 font-mono">
+              Individual Architectural Studies
             </h4>
-            <ul className="space-y-2 text-xs text-slate-600 dark:text-slate-400">
+            <ul className="space-y-2 text-xs text-stone-600 dark:text-zinc-400">
               <li>
                 <button 
-                  onClick={() => onSelectCategory('Engineering')} 
-                  className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                  onClick={() => onNavigateRoute('/architecture/modern-kyoto-machiya')} 
+                  className="hover:text-amber-800 dark:hover:text-amber-300 transition-colors text-left"
                 >
-                  Engineering & Frameworks
+                  Modern Kyoto Machiya Restoration
                 </button>
               </li>
               <li>
                 <button 
-                  onClick={() => onSelectCategory('Artificial Intelligence')} 
-                  className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                  onClick={() => onNavigateRoute('/materials/microcement-lime-wash-surfaces')} 
+                  className="hover:text-amber-800 dark:hover:text-amber-300 transition-colors text-left"
                 >
-                  Artificial Intelligence
+                  Microcement vs Lime Wash Tactile Surfaces
                 </button>
               </li>
               <li>
                 <button 
-                  onClick={() => onSelectCategory('System Architecture')} 
-                  className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                  onClick={() => onNavigateRoute('/millwork/flush-joinery-concealed-storage')} 
+                  className="hover:text-amber-800 dark:hover:text-amber-300 transition-colors text-left"
                 >
-                  System Architecture & CRDTs
+                  Flush Joinery & Concealed Storage Systems
                 </button>
               </li>
               <li>
                 <button 
-                  onClick={() => onSelectCategory('SEO & Performance')} 
-                  className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                  onClick={() => onNavigateRoute('/philosophy/warm-scandinavian-reduction')} 
+                  className="hover:text-amber-800 dark:hover:text-amber-300 transition-colors text-left"
                 >
-                  SEO & Core Web Vitals
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => onSelectCategory('Design Systems')} 
-                  className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
-                >
-                  Design Systems & Tokens
+                  Warm Scandinavian Reduction Philosophy
                 </button>
               </li>
             </ul>
           </div>
 
-          {/* Col 3: SEO & Platform Suite */}
+          {/* Col 3: Research Classifications */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-3">
-              SEO & Platform Suite
+            <h4 className="text-xs font-bold uppercase tracking-wider text-stone-900 dark:text-stone-100 mb-3 font-mono">
+              Thematic Categories
             </h4>
-            <ul className="space-y-2 text-xs text-slate-600 dark:text-slate-400">
+            <ul className="space-y-2 text-xs text-stone-600 dark:text-zinc-400">
               <li>
                 <button 
-                  onClick={onOpenSeoInspector}
-                  className="flex items-center gap-1.5 hover:text-emerald-500 transition-colors"
+                  onClick={() => onSelectCategory('Architecture')} 
+                  className="hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
                 >
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
-                  SEO Health Auditor
+                  Architecture & Timber Preservation
                 </button>
               </li>
               <li>
                 <button 
-                  onClick={onOpenSeoInspector}
-                  className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                  onClick={() => onSelectCategory('Materials')} 
+                  className="hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
                 >
-                  Google SERP Simulator
+                  Mineral Binders & Plaster Materials
                 </button>
               </li>
               <li>
                 <button 
-                  onClick={onOpenSeoInspector}
-                  className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                  onClick={() => onSelectCategory('Millwork')} 
+                  className="hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
                 >
-                  Schema.org JSON-LD Generator
+                  Cabinetry & Concealed Joinery
                 </button>
               </li>
               <li>
                 <button 
-                  onClick={onOpenSeoInspector}
-                  className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                  onClick={() => onSelectCategory('Philosophy')} 
+                  className="hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
                 >
-                  Dynamic XML Sitemap
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={onOpenSeoInspector}
-                  className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
-                >
-                  Robots.txt Directive
+                  Quiet Spatial Philosophy (Japandi)
                 </button>
               </li>
             </ul>
           </div>
 
-          {/* Col 4: Deployment & Vercel */}
+          {/* Col 4: Technical SEO & AEO Suite */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-3">
-              Deployment & Host
+            <h4 className="text-xs font-bold uppercase tracking-wider text-stone-900 dark:text-stone-100 mb-3 font-mono">
+              SEO & Machine Readability
             </h4>
-            <ul className="space-y-2 text-xs text-slate-600 dark:text-slate-400">
+            <ul className="space-y-2 text-xs text-stone-600 dark:text-zinc-400">
               <li>
                 <button 
-                  onClick={onOpenVercelDeploy}
-                  className="flex items-center gap-1.5 hover:text-indigo-600 dark:hover:text-indigo-400 font-semibold transition-colors"
+                  onClick={onOpenSeoInspector}
+                  className="flex items-center gap-1.5 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors text-left font-medium"
                 >
-                  <UploadCloud className="w-3.5 h-3.5 text-indigo-500" />
-                  Vercel Deployment Guide
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                  SEO & AEO Snippet Auditor
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={onOpenSeoInspector}
+                  className="hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+                >
+                  Schema.org Article & FAQPage JSON-LD
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={onOpenSeoInspector}
+                  className="hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+                >
+                  Dynamic XML Sitemap Protocol
                 </button>
               </li>
               <li>
                 <button 
                   onClick={onOpenVercelDeploy}
-                  className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                  className="flex items-center gap-1 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
                 >
-                  Vercel SPA Rewrites (vercel.json)
+                  <UploadCloud className="w-3.5 h-3.5" />
+                  Vercel Edge SPA Deployment Guide
                 </button>
-              </li>
-              <li>
-                <button 
-                  onClick={onOpenVercelDeploy}
-                  className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
-                >
-                  Export Articles as Markdown (.md)
-                </button>
-              </li>
-              <li>
-                <a 
-                  href="https://vercel.com/docs" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
-                >
-                  Vercel Official Docs
-                </a>
               </li>
             </ul>
           </div>
 
         </div>
 
-        {/* Bottom copyright */}
-        <div className="mt-12 pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        {/* Bottom copyright and crawler confirmation */}
+        <div className="mt-12 pt-6 border-t border-stone-200 dark:border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500 dark:text-zinc-400 font-mono">
           <div>
-            © {new Date().getFullYear()} Lumina Magazine. High-Performance Editorial Publishing Platform.
+            © {new Date().getFullYear()} KURA Architectural Journal. Published for architects, joiners, and material researchers.
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <span className="flex items-center gap-1">
-              <Globe className="w-3.5 h-3.5 text-emerald-500" /> Edge CDN Active
+              <Globe className="w-3 h-3 text-emerald-500" /> Google Search Console Verified
             </span>
             <span>•</span>
-            <span>OpenGraph 2.0 Enabled</span>
+            <span>Strict AEO Structure</span>
             <span>•</span>
-            <span>Schema.org Validated</span>
+            <span>Zero-404 Vercel Rewrites</span>
           </div>
         </div>
       </div>

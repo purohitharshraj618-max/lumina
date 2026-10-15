@@ -1,634 +1,603 @@
 import { BlogPost, Comment } from '../types/blog';
 
 export const INITIAL_AUTHORS = {
-  elena: {
-    id: 'elena-rostova',
-    name: 'Elena Rostova',
-    title: 'Staff Frontend Architect & Systems Engineer',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&h=256&q=80',
-    bio: 'Elena leads web runtime architecture, performance tuning, and design systems. Former performance lead at Hyperion.',
-    twitter: '@elenarostova',
-    github: 'elenarostova',
-    role: 'Editor in Chief',
-  },
-  marcus: {
-    id: 'marcus-vance',
-    name: 'Marcus Vance',
-    title: 'Principal Cloud & SEO Infrastructure Specialist',
+  kenzo: {
+    id: 'kenzo-mori',
+    name: 'Kenzo Mori',
+    title: 'Principal Architect & Machiya Restoration Specialist',
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=256&h=256&q=80',
-    bio: 'Marcus focuses on edge runtime deployment, search engine crawling optimization, and web vitals instrumentation.',
-    twitter: '@marcusvance',
-    github: 'marcusvance',
-    role: 'Technical Columnist',
+    bio: 'Kenzo specializes in heritage Kyoto timber preservation, passive microclimatic courtyard design, and reductive architectural detailing.',
+    twitter: '@kenzomori_arch',
+    github: 'kenzomori',
+    role: 'Editorial Director',
   },
-  sophia: {
-    id: 'sophia-chen',
-    name: 'Sophia Chen',
-    title: 'Director of AI & Computational Interfaces',
-    avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=256&h=256&q=80',
-    bio: 'Sophia researches generative interfaces, token efficiency, and ergonomic human-computer interaction patterns.',
-    twitter: '@sophiachen_ai',
-    github: 'sophiachen',
-    role: 'Staff Writer',
+  astrid: {
+    id: 'astrid-lindholm',
+    name: 'Astrid Lindholm',
+    title: 'Architectural Materiality & Interior Architect',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&h=256&q=80',
+    bio: 'Based in Copenhagen and Kyoto, Astrid investigates mineral binders, monolithic lime wash surfaces, and flush cabinetry interfaces.',
+    twitter: '@astridlindholm',
+    github: 'astridlindholm',
+    role: 'Senior Editor',
   },
 };
 
 export const INITIAL_POSTS: BlogPost[] = [
   {
-    id: 'seo-modern-playbook-2026',
-    slug: 'modern-seo-playbook-web-apps',
-    title: 'The Modern SEO Playbook: Structured Data, Dynamic OG, and Core Web Vitals',
-    subtitle: 'A practical, engineering-first guide to dominating Google Search and social feed discovery.',
-    excerpt: 'Discover how modern web applications leverage Schema.org JSON-LD, automated OpenGraph generation, and sub-100ms Core Web Vitals to outrank competitors in organic search.',
-    coverImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&h=630&q=80',
-    coverImageAlt: 'Modern data analytics dashboard showing SEO traffic growth and performance metrics',
-    category: 'SEO & Performance',
-    tags: ['JavaScript SEO', 'Core Web Vitals', 'JSON-LD', 'React SEO', 'Web Performance'],
-    author: INITIAL_AUTHORS.marcus,
-    publishedAt: '2026-03-28T09:00:00Z',
-    updatedAt: '2026-04-02T14:30:00Z',
+    id: 'kura-modern-kyoto-machiya',
+    slug: 'modern-kyoto-machiya',
+    routePath: '/architecture/modern-kyoto-machiya',
+    title: 'Modern Kyoto Machiya: Adapting Historic Townhouses | KURA',
+    subtitle: 'Preserving timber heritage through passive courtyard ventilation, concealed thermal insulation, and reductive detailing.',
+    excerpt: 'Explore how modern Kyoto machiya townhouses integrate lightwells, tsuboniwa courtyard gardens, and timber preservation with contemporary minimalist living.',
+    coverImage: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&h=800&q=80',
+    coverImageAlt: 'Restored modern Kyoto machiya courtyard featuring black charred timber screens, raked moss garden, and polished concrete interior floor',
+    coverImageWidth: 1200,
+    coverImageHeight: 800,
+    category: 'Architecture',
+    tags: ['Kyoto Machiya', 'Japanese Architecture', 'Timber Restoration', 'Tsuboniwa Garden', 'Passive Ventilation'],
+    author: INITIAL_AUTHORS.kenzo,
+    publishedAt: '2026-03-20T08:00:00Z',
+    updatedAt: '2026-04-05T12:00:00Z',
+    readingTimeMinutes: 8,
+    wordCount: 1680,
+    featured: true,
+    trending: true,
+    views: 24100,
+    claps: 890,
+    seo: {
+      metaTitle: 'Modern Kyoto Machiya: Adapting Historic Townhouses | KURA',
+      metaDescription: 'Explore how modern Kyoto machiya townhouses integrate lightwells, tsuboniwa courtyard gardens, and timber preservation with contemporary minimalist living.',
+      mainKeyword: 'Modern Kyoto Machiya',
+      relatedKeywords: [
+        'Kyoto townhouse restoration',
+        'tsuboniwa courtyard garden design',
+        'Japanese timber frame architecture',
+        'shou sugi ban cedar cladding',
+        'passive microclimate ventilation',
+      ],
+      searchVolume: '400–1,200 /mo',
+      keywordDifficulty: '15–35 (Low)',
+      keywords: [
+        'Modern Kyoto Machiya',
+        'Kyoto townhouse restoration',
+        'tsuboniwa courtyard garden design',
+        'Japanese timber frame architecture',
+        'shou sugi ban cedar cladding',
+        'passive microclimate ventilation',
+      ],
+      canonicalUrl: 'https://luminablog.vercel.app/architecture/modern-kyoto-machiya',
+      ogImage: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&h=630&q=80',
+      twitterCardType: 'summary_large_image',
+      structuredDataType: 'TechArticle',
+    },
+    aeoQuestions: [
+      {
+        id: 'what-is-a-machiya',
+        question: 'What is a traditional Kyoto machiya townhouse?',
+        directAnswer: 'A Kyoto machiya is a traditional wooden townhouse characterized by a narrow street frontage, a deep longitudinal interior floor plan (historically termed "eel\'s nest" or unagi no nedoko), and integrated courtyard gardens that originated during the Edo and Meiji eras.',
+      },
+      {
+        id: 'how-to-restore-machiya',
+        question: 'How do contemporary architects restore machiya for modern climate and comfort?',
+        directAnswer: 'Contemporary architects restore machiya by preserving hand-hewn cedar and cypress structural frameworks while discreetly installing high-performance vacuum-insulated double glazing, subterranean hydronic radiant heating, and breathable hemp-lime wall insulation.',
+      },
+      {
+        id: 'why-tsuboniwa-courtyard',
+        question: 'Why is the tsuboniwa courtyard garden essential to passive environmental design?',
+        directAnswer: 'The tsuboniwa functions as an authentic thermal chimney; cool air settles over shaded moss and stone, inducing negative pressure that naturally pulls cross-ventilation through the deep, narrow home without requiring mechanical air conditioning.',
+      },
+      {
+        id: 'authentic-materials',
+        question: 'What materials are authentic to modern Japanese townhouse adaptive reuse?',
+        directAnswer: 'Authentic machiya adaptive reuse utilizes charred Japanese cedar (yakisugi), hand-troweled lime-sand plaster (shikkui), washi paper shoji partitions, raw black steel hardware, and unlacquered Yoshino cypress (hinoki).',
+      },
+      {
+        id: 'tori-niwa-passage',
+        question: 'What spatial sequence defines the tori-niwa earthen service passage?',
+        directAnswer: 'The tori-niwa is an unbroken longitudinal earthen corridor connecting the street entrance directly to the rear courtyard garden, functioning as a high-velocity thermal conduit and workspace.',
+      },
+    ],
+    tableOfContents: [
+      { id: 'what-is-a-machiya', text: 'What is a traditional Kyoto machiya townhouse?', level: 2 },
+      { id: 'tori-niwa-passage', text: 'What spatial sequence defines the tori-niwa earthen service passage?', level: 3 },
+      { id: 'how-to-restore-machiya', text: 'How do contemporary architects restore machiya for modern climate and comfort?', level: 2 },
+      { id: 'why-tsuboniwa-courtyard', text: 'Why is the tsuboniwa courtyard garden essential to passive environmental design?', level: 2 },
+      { id: 'authentic-materials', text: 'What materials are authentic to modern Japanese townhouse adaptive reuse?', level: 2 },
+    ],
+    content: `## What is a traditional Kyoto machiya townhouse? {#what-is-a-machiya}
+
+:::aeo-answer
+**Direct Answer:** A Kyoto machiya is a traditional wooden townhouse characterized by a narrow street frontage, a deep longitudinal interior floor plan (historically termed "eel's nest" or *unagi no nedoko*), and integrated courtyard gardens that originated during the Edo and Meiji eras.
+:::
+
+Historically constructed by merchant families and artisans, the traditional machiya maximized street accessibility under feudal tax regimes that assessed property dues strictly by facade width. The resultant architectural typology produces a dramatic spatial sequence: visitors enter through a compact earthen passage (*tori-niwa*), moving sequentially through public tatami tea chambers (*mise-no-ma*) toward private inner sanctums and shaded garden lightwells.
+
+The structural skeleton relies on mortise-and-tenon interlocking timber joinery (*kigumi*), erected entirely without iron nails. This flexible joinery enables the frame to absorb seismic vibrations while resting upon unanchored granite foundation stones.
+
+### What spatial sequence defines the tori-niwa earthen service passage? {#tori-niwa-passage}
+
+:::aeo-answer
+**Direct Answer:** The tori-niwa is an unbroken longitudinal earthen corridor connecting the street entrance directly to the rear courtyard garden, functioning as a high-velocity thermal conduit and workspace.
+:::
+
+In traditional residential architecture, the *tori-niwa* serves as both service artery and environmental engine. Cold air pooling over shaded garden moss is drawn rapidly down this compressed dirt hall toward the street facade, creating a natural breeze that cools adjacent raised tatami platforms without mechanical equipment.
+
+![Restored Kyoto machiya central courtyard featuring charred cedar posts and raked river stone garden](https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=1200&h=700&q=80)
+
+## How do contemporary architects restore machiya for modern climate and comfort? {#how-to-restore-machiya}
+
+:::aeo-answer
+**Direct Answer:** Contemporary architects restore machiya by preserving hand-hewn cedar and cypress structural frameworks while discreetly installing high-performance vacuum-insulated double glazing, subterranean hydronic radiant heating, and breathable hemp-lime wall insulation.
+:::
+
+Unmodified historic machiya suffer from severe winter thermal draftiness and summer humidity retention. Modern restoration practices treat the building as an active hybrid envelope:
+
+1. **Seismic Retrofitting**: Concealed structural steel moment frames or carbon-fiber composite bands reinforce century-old posts without interrupting exposed cross-beams.
+2. **Thermal Envelope Insulation**: Permeable cellulose and wood-fiber batts line the floor joists and roof purlins, maintaining moisture vapor transmission while achieving high thermal resistance.
+3. **Subfloor Hydronic Radiant Heating**: Low-profile water loops embedded beneath hand-scraped wide oak or [seamless microcement floor screeds](/materials/microcement-lime-wash-surfaces) provide continuous ambient comfort without dry convective forced air.
+
+## Why is the tsuboniwa courtyard garden essential to passive environmental design? {#why-tsuboniwa-courtyard}
+
+:::aeo-answer
+**Direct Answer:** The tsuboniwa functions as an authentic thermal chimney; cool air settles over shaded moss and stone, inducing negative pressure that naturally pulls cross-ventilation through the deep, narrow home without requiring mechanical air conditioning.
+:::
+
+In Kyoto's humid subtropical summer basin, mechanical cooling was nonexistent for centuries. The *tsuboniwa* (a garden measuring two tatami mats or roughly 3.3 square meters) operates on the Bernoulli principle. Sun exposure warms the street facade and roof eaves, while the sunken stone-and-bamboo courtyard remains shaded and cool. 
+
+As warm interior air rises through clerestory louvers, cool air is drawn across damp river stones and Japanese maple foliage into the central living spaces, generating a continuous sensory breeze.
+
+## What materials are authentic to modern Japanese townhouse adaptive reuse? {#authentic-materials}
+
+:::aeo-answer
+**Direct Answer:** Authentic machiya adaptive reuse utilizes charred Japanese cedar (yakisugi), hand-troweled lime-sand plaster (shikkui), washi paper shoji partitions, raw black steel hardware, and unlacquered Yoshino cypress (hinoki).
+:::
+
+Material integrity dictates whether a renovation feels historic or counterfeit. Contemporary Kyoto renovations restrict their material palette to living surfaces that patina gracefully:
+
+- **Yakisugi (Shou Sugi Ban)**: Exterior cedar siding charred with controlled fire to carbonize the exterior cellulose, rendering it naturally immune to rot, insect infestation, and fire.
+- **Shikkui Plaster**: Natural slaked limestone mixed with seaweed extract (*funori*) and hemp fiber binder, hand-burnished to create velvety walls that passively regulate indoor humidity.
+- **Yoshino Hinoki**: Untreated native cypress used for wet-room vanities and structural thresholds, emitting subtle phytoncide aromatics when touched by steam.
+- **Concealed Storage**: Contemporary architects integrate [precision flush joinery millwork](/millwork/flush-joinery-concealed-storage) behind timber paneling to conceal modern appliances without violating historic aesthetic restraint.`,
+  },
+  {
+    id: 'kura-microcement-lime-wash-surfaces',
+    slug: 'microcement-lime-wash-surfaces',
+    routePath: '/materials/microcement-lime-wash-surfaces',
+    title: 'Microcement vs Lime Wash: Tactile Interior Surfaces | KURA',
+    subtitle: 'Analyzing compressive durability, vapor permeability, application thickness, and mineral patina in quiet interiors.',
+    excerpt: 'Compare microcement and lime wash finishes for residential interiors: evaluate durability, moisture resistance, tactile patina, and application techniques.',
+    coverImage: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&h=800&q=80',
+    coverImageAlt: 'Tactile minimalist bathroom with seamless bone microcement floor and hand-troweled textured lime wash walls',
+    coverImageWidth: 1200,
+    coverImageHeight: 800,
+    category: 'Materials',
+    tags: ['Microcement', 'Lime Wash', 'Tactile Surfaces', 'Mineral Finishes', 'Interior Materials'],
+    author: INITIAL_AUTHORS.astrid,
+    publishedAt: '2026-03-25T10:30:00Z',
+    updatedAt: '2026-04-03T16:00:00Z',
     readingTimeMinutes: 7,
-    wordCount: 1490,
-    featured: true,
-    trending: true,
-    views: 18450,
-    claps: 642,
-    seo: {
-      metaTitle: 'Technical SEO for JavaScript Websites: Core Web Vitals & JSON-LD',
-      metaDescription: 'Master technical SEO for JavaScript websites: Core Web Vitals optimization, JSON-LD schema markup, dynamic Open Graph images, and React SEO best practices.',
-      mainKeyword: 'Technical SEO for JavaScript Websites',
-      relatedKeywords: [
-        'Core Web Vitals optimization',
-        'JSON-LD schema markup',
-        'dynamic Open Graph images',
-        'React SEO best practices',
-        'JavaScript SEO',
-        'website performance optimization',
-      ],
-      searchVolume: '100–800 /mo',
-      keywordDifficulty: '10–35 (Low)',
-      keywords: [
-        'Technical SEO for JavaScript Websites',
-        'Core Web Vitals optimization',
-        'JSON-LD schema markup',
-        'dynamic Open Graph images',
-        'React SEO best practices',
-        'JavaScript SEO',
-        'website performance optimization',
-        'Structured Data',
-        'Vercel Deployment',
-      ],
-      canonicalUrl: 'https://luminablog.vercel.app/#post/modern-seo-playbook-web-apps',
-      ogImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&h=630&q=80',
-      twitterCardType: 'summary_large_image',
-      structuredDataType: 'TechArticle',
-    },
-    tableOfContents: [
-      { id: 'the-death-of-traditional-meta', text: '1. Beyond Generic Meta Tags & React SEO Best Practices', level: 2 },
-      { id: 'schema-org-structured-data', text: '2. JSON-LD Schema Markup Superpowers', level: 2 },
-      { id: 'dynamic-social-cards', text: '3. Dynamic Open Graph Images & Social Cards', level: 2 },
-      { id: 'core-web-vitals-inp-lcp', text: '4. Core Web Vitals Optimization & Performance', level: 2 },
-      { id: 'javascript-seo-checklist', text: '5. Technical SEO for JavaScript Websites Checklist', level: 2 },
-    ],
-    content: `Search engines evaluate modern single-page applications with stricter scrutiny than ever before. For engineering teams managing high-performance React and client-side applications, executing comprehensive **technical SEO for JavaScript websites** is the difference between page-one organic discovery and remaining invisible to search engine crawlers.
-
-This blueprint breaks down the exact methodologies for **Core Web Vitals optimization**, valid **JSON-LD schema markup**, **dynamic Open Graph images**, and battle-tested **React SEO best practices** to drive sustainable **website performance optimization**.
-
-## 1. Beyond Generic Meta Tags & React SEO Best Practices {#the-death-of-traditional-meta}
-
-Generic title tags like \`Home - My App\` cause catastrophic harm to search rankings. Google's crawler evaluates topic authority and semantic entity relationships using disciplined parameters:
-
-- **Page Titles**: Must fall strictly between 30 and 60 characters. Place your primary target query (**Technical SEO for JavaScript Websites**) near the beginning, followed by brand identity.
-- **Meta Descriptions**: Target 120 to 160 characters. A strong meta description acts as organic ad copy; highlighting **Core Web Vitals optimization** and structured data lifts organic click-through rates.
-- **Canonical Tags**: Specify absolute URLs to eliminate duplicate content dilution across query parameters, trailing slash variations, and CDN mirrors.
-
-> "Applying proven React SEO best practices and website performance optimization elevates organic click-through rates by up to 34%, even before rankings change."
-
-## 2. JSON-LD Schema Markup Superpowers {#schema-org-structured-data}
-
-While HTML markup communicates layout, **JSON-LD schema markup (JavaScript Object Notation for Linked Data)** communicates entity knowledge directly to Google's Knowledge Graph.
-
-By embedding an active \`<script type="application/ld+json">\` on each page, crawlers parse article authors, publication timestamps, publisher logos, and breadcrumb structures without fragile DOM scraping.
-
-Here is an architectural pattern for an editorial blog post:
-
-\`\`\`json
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Technical SEO for JavaScript Websites",
-  "datePublished": "2026-03-28T09:00:00Z",
-  "keywords": "Technical SEO for JavaScript Websites, Core Web Vitals optimization, JSON-LD schema markup",
-  "author": {
-    "@type": "Person",
-    "name": "Marcus Vance",
-    "jobTitle": "Principal Cloud & SEO Specialist"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Lumina",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://luminablog.vercel.app/logo.png"
-    }
-  }
-}
-\`\`\`
-
-:::tip
-Always test your live JSON-LD schema markup using Google's Rich Results Test tool. Valid schemas qualify for rich snippet carousels, publication badges, and author verification indicators.
-:::
-
-## 3. Dynamic Open Graph Images & Social Cards {#dynamic-social-cards}
-
-Organic traffic does not rely solely on search engines; social channels—X/Twitter, LinkedIn, Discord, and Slack—drive up to 45% of technical readership. Generating **dynamic Open Graph images** ensures every shared link transforms into a high-engagement visual card:
-
-\`\`\`html
-<!-- Critical Social Sharing Directives -->
-<meta property="og:type" content="article" />
-<meta property="og:title" content="Technical SEO for JavaScript Websites" />
-<meta property="og:image" content="https://luminablog.vercel.app/assets/og-cover.png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta name="twitter:card" content="summary_large_image" />
-\`\`\`
-
-## 4. Core Web Vitals Optimization & Performance {#core-web-vitals-inp-lcp}
-
-Core Web Vitals represent Google's user experience threshold and play an essential role in **JavaScript SEO**:
-
-1. **LCP (Largest Contentful Paint)**: Keep under 1.8 seconds by preloading priority hero images, utilizing modern formats (WebP/AVIF), and serving assets over high-speed CDNs.
-2. **INP (Interaction to Next Paint)**: Replace blocking JavaScript loops with microtask batching or web workers to guarantee sub-100ms response time.
-3. **CLS (Cumulative Layout Shift)**: Always specify explicit \`width\` and \`height\` aspect ratios on media elements and avoid injecting layout elements above existing text.
-
-## 5. Technical SEO for JavaScript Websites Checklist {#javascript-seo-checklist}
-
-Before deploying any production release to Vercel or your hosting provider, verify:
-
-1. \`robots.txt\` allows crawlers and links directly to \`sitemap.xml\`.
-2. Title tags are unique across all pages and under 60 characters with your target keyword.
-3. Every image includes descriptive \`alt\` attributes for image search discovery.
-4. JSON-LD schema markup contains zero syntax validation errors.
-5. All external links include \`rel="noopener noreferrer"\` to preserve link equity and site security.
-
-Follow these principles consistently, and your web properties will achieve sustainable, compounding organic search distribution.`,
-  },
-  {
-    id: 'deploy-vercel-spa-hardening',
-    slug: 'deploying-modern-spas-on-vercel',
-    title: 'Deploying Modern SPAs on Vercel: Zero-Config CI/CD, Edge Rewrites, and Hardening',
-    subtitle: 'From local development to an edge-accelerated global deployment in under three minutes.',
-    excerpt: 'Step-by-step masterclass on deploying Vite and React applications to Vercel with clean vercel.json rewrites, HTTP security headers, and automated continuous delivery.',
-    coverImage: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&h=630&q=80',
-    coverImageAlt: 'Modern server infrastructure glowing with fiber optic connectivity representing Vercel edge network',
-    category: 'Cloud & DevOps',
-    tags: ['Vercel SPA Deployment', 'vercel.json configuration', 'Vite React deployment', 'Vercel rewrite rules', 'Vercel CI/CD'],
-    author: INITIAL_AUTHORS.marcus,
-    publishedAt: '2026-03-24T11:20:00Z',
-    updatedAt: '2026-03-29T16:00:00Z',
-    readingTimeMinutes: 6,
-    wordCount: 1350,
+    wordCount: 1540,
     featured: false,
     trending: true,
-    views: 12390,
-    claps: 512,
-    seo: {
-      metaTitle: 'Vercel SPA Deployment: vercel.json Rewrites & CI/CD Guide',
-      metaDescription: 'Master Vercel SPA deployment: configure vercel.json rewrite rules, fix Vercel SPA 404 errors, set security headers, and streamline Vite React deployment.',
-      mainKeyword: 'Vercel SPA Deployment',
-      relatedKeywords: [
-        'Vercel rewrite rules',
-        'Vite React deployment',
-        'vercel.json configuration',
-        'fix Vercel SPA 404 errors',
-        'Vercel security headers',
-        'Vercel CI/CD',
-      ],
-      searchVolume: '100–600 /mo',
-      keywordDifficulty: '5–25 (Est.)',
-      keywords: [
-        'Vercel SPA Deployment',
-        'Vercel rewrite rules',
-        'Vite React deployment',
-        'vercel.json configuration',
-        'fix Vercel SPA 404 errors',
-        'Vercel security headers',
-        'Vercel CI/CD',
-      ],
-      canonicalUrl: 'https://luminablog.vercel.app/#post/deploying-modern-spas-on-vercel',
-      ogImage: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&h=630&q=80',
-      twitterCardType: 'summary_large_image',
-      structuredDataType: 'TechArticle',
-    },
-    tableOfContents: [
-      { id: 'why-vercel-for-vite', text: '1. Why Vercel SPA Deployment Excels for Vite React', level: 2 },
-      { id: 'the-essential-vercel-json', text: '2. The Essential vercel.json Configuration', level: 2 },
-      { id: 'single-page-rewrites', text: '3. Fix Vercel SPA 404 Errors with Rewrite Rules', level: 2 },
-      { id: 'security-and-caching', text: '4. Vercel Security Headers & Production Caching', level: 2 },
-      { id: 'one-click-deployment', text: '5. Automated Vercel CI/CD Workflow', level: 2 },
-    ],
-    content: `When building high-speed single-page applications, **Vercel SPA deployment** represents the gold standard for developer experience and edge performance. While built originally around Next.js, Vercel provides first-class support for **Vite React deployment** with global Anycast CDN acceleration.
-
-However, deploying an SPA without accurate routing configuration causes the notorious 404 error on page refresh. This masterclass covers the full blueprint: mastering **vercel.json configuration**, applying **Vercel rewrite rules**, how to **fix Vercel SPA 404 errors**, configuring **Vercel security headers**, and setting up continuous **Vercel CI/CD**.
-
-## 1. Why Vercel SPA Deployment Excels for Vite React {#why-vercel-for-vite}
-
-Opting for a dedicated **Vercel SPA deployment** provides distinct architectural advantages:
-- **Global Edge Network (Anycast DNS)**: Static assets (JS, CSS, images) are cached in over 100 global edge locations, resulting in sub-25ms Time to First Byte (TTFB).
-- **Automatic SSL/TLS**: Free wild-card SSL certificates provisioned automatically with instant renewal.
-- **Atomic Deployments**: Every git push triggers an automated preview URL, facilitating regression testing prior to production merges.
-
-## 2. The Essential vercel.json Configuration {#the-essential-vercel-json}
-
-To instruct Vercel's build pipeline and routing engine, include a production-grade **vercel.json configuration** file in the root directory:
-
-\`\`\`json
-{
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": "vite",
-  "installCommand": "npm install --legacy-peer-deps",
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "cleanUrls": true,
-  "rewrites": [
-    {
-      "source": "/((?!assets/|favicon.ico|robots.txt|sitemap.xml).*)",
-      "destination": "/index.html"
-    }
-  ]
-}
-\`\`\`
-
-## 3. Fix Vercel SPA 404 Errors with Rewrite Rules {#single-page-rewrites}
-
-In a Single Page Application, client-side routing handles deep links like \`/posts/my-article\` or \`/categories/engineering\`. When a visitor navigates directly to that URL or hits refresh, a standard web server looks for a physical file named \`/posts/my-article/index.html\` and returns a 404 error.
-
-Applying proper **Vercel rewrite rules** instructs Vercel to route all non-asset requests back to \`/index.html\`, allowing React's client-side router to handle the route seamlessly and permanently **fix Vercel SPA 404 errors**.
-
-:::note
-Notice the negative lookahead \`(?!assets/|robots.txt|sitemap.xml)\`. This ensures static assets, sitemaps, and robots.txt are served directly rather than falling back to the HTML wrapper.
-:::
-
-## 4. Production Caching & Security Headers {#security-and-caching}
-
-High-performance web apps must declare strict HTTP security headers and immutable asset caching:
-
-\`\`\`json
-{
-  "headers": [
-    {
-      "source": "/assets/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
-      ]
-    }
-  ]
-}
-\`\`\`
-
-## 5. Push-to-Deploy Workflow {#one-click-deployment}
-
-Deploying your repository to Vercel takes 3 simple commands:
-
-\`\`\`bash
-# 1. Initialize git and commit your files
-git init
-git add .
-git commit -m "feat: initial release with Vercel configuration"
-
-# 2. Deploy using Vercel CLI (or connect GitHub in Vercel dashboard)
-npx vercel
-\`\`\`
-
-Once connected, every push to your main branch triggers an automatic production release, giving you a lightning-fast editorial publication that scales effortlessly to millions of readers.`,
-  },
-  {
-    id: 'frontend-architecture-2026',
-    slug: 'mastering-modern-frontend-architecture',
-    title: 'Mastering Modern Frontend Architecture: Islands, RSCs, and Vite at Scale',
-    subtitle: 'Deconstructing modern component composition, hydration boundaries, and state ergonomics.',
-    excerpt: 'Explore how modular architecture, selective hydration, and instant bundlers allow modern web teams to build massive, maintainable web applications without bundle bloat.',
-    coverImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&h=630&q=80',
-    coverImageAlt: 'Clean lines of code displayed on multiple high-resolution developer monitors',
-    category: 'Engineering',
-    tags: ['Modern Frontend Architecture', 'React Server Components', 'Vite performance', 'islands architecture', 'TypeScript project structure'],
-    author: INITIAL_AUTHORS.elena,
-    publishedAt: '2026-03-18T14:15:00Z',
-    updatedAt: '2026-03-21T10:00:00Z',
-    readingTimeMinutes: 9,
-    wordCount: 1720,
-    featured: true,
-    trending: false,
     views: 19800,
-    claps: 780,
+    claps: 720,
     seo: {
-      metaTitle: 'Modern Frontend Architecture: RSCs, Islands & Vite Scale',
-      metaDescription: 'Explore modern frontend architecture: React Server Components, hydration optimization, Vite performance, islands architecture, and TypeScript project structure.',
-      mainKeyword: 'Modern Frontend Architecture',
+      metaTitle: 'Microcement vs Lime Wash: Tactile Interior Surfaces | KURA',
+      metaDescription: 'Compare microcement and lime wash finishes for residential interiors: evaluate durability, moisture resistance, tactile patina, and application techniques.',
+      mainKeyword: 'Microcement vs Lime Wash',
       relatedKeywords: [
-        'React Server Components',
-        'React hydration optimization',
-        'Vite performance',
-        'modular frontend architecture',
-        'TypeScript project structure',
-        'islands architecture',
+        'microcement bathroom flooring',
+        'lime wash wall finish application',
+        'seamless architectural screeds',
+        'breathable mineral interior paints',
+        'tactile minimalist plaster',
       ],
-      searchVolume: '100–800 /mo',
-      keywordDifficulty: '10–30 (Low)',
+      searchVolume: '800–2,400 /mo',
+      keywordDifficulty: '20–40 (Moderate)',
       keywords: [
-        'Modern Frontend Architecture',
-        'React Server Components',
-        'React hydration optimization',
-        'Vite performance',
-        'modular frontend architecture',
-        'TypeScript project structure',
-        'islands architecture',
+        'Microcement vs Lime Wash',
+        'microcement bathroom flooring',
+        'lime wash wall finish application',
+        'seamless architectural screeds',
+        'breathable mineral interior paints',
+        'tactile minimalist plaster',
       ],
-      canonicalUrl: 'https://luminablog.vercel.app/#post/mastering-modern-frontend-architecture',
-      ogImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&h=630&q=80',
+      canonicalUrl: 'https://luminablog.vercel.app/materials/microcement-lime-wash-surfaces',
+      ogImage: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&h=630&q=80',
       twitterCardType: 'summary_large_image',
       structuredDataType: 'TechArticle',
     },
-    tableOfContents: [
-      { id: 'the-evolution-of-spas', text: '1. Modern Frontend Architecture & Islands Paradigm', level: 2 },
-      { id: 'zero-cost-abstractions', text: '2. React Server Components & React Hydration Optimization', level: 2 },
-      { id: 'vite-esm-tooling', text: '3. Maximizing Vite Performance at Scale', level: 2 },
-      { id: 'modular-architecture-patterns', text: '4. Modular Frontend Architecture & TypeScript Project Structure', level: 2 },
+    aeoQuestions: [
+      {
+        id: 'what-is-difference',
+        question: 'What is the fundamental difference between microcement and lime wash?',
+        directAnswer: 'Microcement is a polymer-modified hydraulic cementitious coating engineered for seamless, water-resistant floors and wet zones, whereas lime wash is a breathable mineral paint composed of slaked lime and natural earth pigments formulated exclusively for vertical surfaces.',
+      },
+      {
+        id: 'microcement-over-tile',
+        question: 'Can microcement be applied over existing tile in wet room bathrooms?',
+        directAnswer: 'Yes, premium microcement can be applied directly over sound ceramic or porcelain tile when paired with an epoxy moisture-barrier primer, fiberglass reinforcing mesh, and a two-component aliphatic polyurethane sealant.',
+      },
+      {
+        id: 'lime-wash-air-quality',
+        question: 'How does lime wash improve indoor air quality and moisture regulation?',
+        directAnswer: 'Lime wash has a naturally high alkaline pH (above 12) that prevents mold, mildew, and airborne bacteria growth without synthetic biocides, while its micro-porous structure absorbs excess airborne humidity and releases it as ambient moisture drops.',
+      },
+      {
+        id: 'longevity-comparison',
+        question: 'Which surface treatment offers better longevity in high-traffic architectural spaces?',
+        directAnswer: 'Microcement offers superior compressive strength (exceeding 35 MPa) and abrasion resistance for high-traffic floors and vanity counters, while lime wash offers effortless spot-repairability and develops a softening patina on interior walls over decades.',
+      },
+      {
+        id: 'lime-wash-drywall',
+        question: 'Can lime wash be applied directly over standard gypsum drywall?',
+        directAnswer: 'Yes, lime wash can be applied to standard drywall provided the substrate is first coated with a dedicated acrylic mineral primer containing fine silica aggregate to create mechanical bonding tooth.',
+      },
     ],
-    content: `The web ecosystem has evolved beyond monolithic megabyte-sized client bundles. Today, adopting a disciplined **modern frontend architecture** allows engineering teams to construct massive applications that boot instantly, maintain sub-second navigation, and deliver ergonomic developer workflows.
+    tableOfContents: [
+      { id: 'what-is-difference', text: 'What is the fundamental difference between microcement and lime wash?', level: 2 },
+      { id: 'lime-wash-drywall', text: 'Can lime wash be applied directly over standard gypsum drywall?', level: 3 },
+      { id: 'microcement-over-tile', text: 'Can microcement be applied over existing tile in wet room bathrooms?', level: 2 },
+      { id: 'lime-wash-air-quality', text: 'How does lime wash improve indoor air quality and moisture regulation?', level: 2 },
+      { id: 'longevity-comparison', text: 'Which surface treatment offers better longevity in high-traffic architectural spaces?', level: 2 },
+    ],
+    content: `## What is the fundamental difference between microcement and lime wash? {#what-is-difference}
 
-In this deep architectural dive, we examine **React Server Components**, **React hydration optimization**, maximizing **Vite performance**, implementing **islands architecture**, and designing a scalable **TypeScript project structure** within a clean **modular frontend architecture**.
+:::aeo-answer
+**Direct Answer:** Microcement is a polymer-modified hydraulic cementitious coating engineered for seamless, water-resistant floors and wet zones, whereas lime wash is a breathable mineral paint composed of slaked lime and natural earth pigments formulated exclusively for vertical surfaces.
+:::
 
-## 1. Modern Frontend Architecture & Islands Paradigm {#the-evolution-of-spas}
+Architects frequently specify both materials within a single residence to achieve tactile continuity, yet their chemical compositions serve contrasting spatial functions:
 
-Traditional single-page applications shipped complete framework runtimes on page load, forcing mobile devices to spend hundreds of milliseconds parsing JavaScript before rendering the first meaningful pixel.
+- **Microcement (Micro-concrete)**: A 2mm to 3mm composite of ultra-fine Portland cement, high-performance liquid polymers, quartz aggregates, and inorganic pigments. It forms a continuous structural skin capable of withstanding direct water exposure, foot traffic, and thermal expansion.
+- **Lime Wash**: An ancient mineral coating made by slaking calcium oxide with water and aging it in vats. Applied with broad masonry brushes in crisscross patterns, it calcifies upon exposure to atmospheric carbon dioxide (*carbonation*), converting back into limestone on the wall surface.
 
-Modern engineering combines **islands architecture** with strict hydration budgets:
-- **Static Content First**: Editorial copy, headers, and navigation do not require dynamic state loops.
-- **Interactive Islands**: Dynamic components—such as search modals, like buttons, and comment forms—isolate their reactive state into self-contained units without bloating the global tree.
+### Can lime wash be applied directly over standard gypsum drywall? {#lime-wash-drywall}
 
-## 2. React Server Components & React Hydration Optimization {#zero-cost-abstractions}
+:::aeo-answer
+**Direct Answer:** Yes, lime wash can be applied to standard drywall provided the substrate is first coated with a dedicated acrylic mineral primer containing fine silica aggregate to create mechanical bonding tooth.
+:::
 
-Leveraging **React Server Components** shifts heavy computation and data fetching to the server, delivering pristine HTML directly to the browser. Combined with **React hydration optimization**, clients only execute hydration steps for interactive components that require event listeners.
+Without a silica-infused mineral primer, lime wash cannot adhere to slick drywall paper and risks chalking. The microscopic quartz grains in mineral primers replicate the suction of porous stone, allowing the lime wash to cure into an authentic calcified masonry shell.
 
-Here is an architectural pattern illustrating zero-cost component boundaries within a clean **TypeScript project structure**:
+![Seamless bone microcement curbless shower meeting textured natural lime wash bathroom wall](https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&h=700&q=80)
 
-\`\`\`typescript
-// Clean, modular frontend architecture pattern
-interface ArticleProps {
-  post: BlogPost;
-  onBookmark: (id: string) => void;
-  isBookmarked: boolean;
-}
+## Can microcement be applied over existing tile in wet room bathrooms? {#microcement-over-tile}
 
-export function ArticleCard({ post, onBookmark, isBookmarked }: ArticleProps) {
-  return (
-    <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800">
-      <header className="p-6">
-        <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400">
-          {post.category}
-        </span>
-        <h3 className="mt-2 text-xl font-bold tracking-tight">{post.title}</h3>
-      </header>
-    </article>
-  );
-}
-\`\`\`
+:::aeo-answer
+**Direct Answer:** Yes, premium microcement can be applied directly over sound ceramic or porcelain tile when paired with an epoxy moisture-barrier primer, fiberglass reinforcing mesh, and a two-component aliphatic polyurethane sealant.
+:::
 
-## 3. Maximizing Vite Performance at Scale {#vite-esm-tooling}
+Renovating traditional tiled bathrooms often generates costly demolition debris and landfill waste. Microcement provides an elegant zero-demolition alternative:
 
-Achieving peak **Vite performance** transformed the developer experience by decoupling server start times from codebase size. During development, Vite serves source code over native ESM, delegating module graph resolution to the browser. Hot Module Replacement occurs in under 20 milliseconds, regardless of whether your project contains 10 or 10,000 components.
+1. **Substrate Preparation**: Existing grout lines are degreased and ground flat with diamond pads to eliminate surface contaminants.
+2. **Epoxy Priming & Mesh**: A high-adhesion epoxy primer is rolled across the tile, followed immediately by embedding a 160g alkali-resistant fiberglass mesh to bridge grout joints and suppress reflective cracking.
+3. **Base & Fine Coats**: Two coats of base microcement level the floor plane, followed by two razor-thin coats of fine finish microcement applied with rounded Venetian trowels.
+4. **Polyurethane Waterproofing**: Two applications of solvent-free aliphatic polyurethane sealer guarantee 100% water impermeability against standing shower runoff.
 
-For production builds, Rollup and esbuild package clean, treeshaken assets with hashed filenames that cache indefinitely on edge CDNs.
+## How does lime wash improve indoor air quality and moisture regulation? {#lime-wash-air-quality}
 
-## 4. Modular Frontend Architecture & TypeScript Project Structure {#modular-architecture-patterns}
+:::aeo-answer
+**Direct Answer:** Lime wash has a naturally high alkaline pH (above 12) that prevents mold, mildew, and airborne bacteria growth without synthetic biocides, while its micro-porous structure absorbs excess airborne humidity and releases it as ambient moisture drops.
+:::
 
-Global state stores often become dumping grounds for transient state. A resilient **modular frontend architecture** adheres to the Rule of Proximity:
+Modern petroleum-based acrylic paints seal rooms in plastic films that trap volatile organic compounds (VOCs) and indoor condensation. In contrast, lime wash remains chemically active:
 
-1. **Local State**: State needed by one component stays in \`useState\`.
-2. **Lifted State**: State shared by siblings moves to their closest common ancestor.
-3. **URL State**: Search queries, filter selections, and active modal tabs belong in the URL query parameters or hash to ensure shareability.
-4. **Persistent State**: User preferences (like bookmarks or dark mode) persist in \`localStorage\` with a clean fallback.`,
+- **Natural Hypoallergenic Surface**: Its extreme alkalinity creates an inhospitable environment for spores and allergens without chemical off-gassing.
+- **Vapor Permeability**: The crystalline mineral matrix allows walls to "breathe," buffering indoor humidity spikes in humid bedrooms and living spaces.
+- **Acoustic Softening**: The micro-textured brushed surface gently diffuses high-frequency flutter echoes, yielding noticeably quieter acoustic resonance.
+
+## Which surface treatment offers better longevity in high-traffic architectural spaces? {#longevity-comparison}
+
+:::aeo-answer
+**Direct Answer:** Microcement offers superior compressive strength (exceeding 35 MPa) and abrasion resistance for high-traffic floors and vanity counters, while lime wash offers effortless spot-repairability and develops a softening patina on interior walls over decades.
+:::
+
+Longevity depends on aligning surface physics with mechanical demands. Microcement functions as a monolithic architectural floor that resists chair castors and pets when properly sealed. Lime wash, while unsuitable for floor friction or direct water immersion, never peels or blisters; it simply patinas into soft cloud-like gradients that can be refreshed with a single coat decades later.
+
+To understand how tactile mineral finishes integrate with timber structures, explore our [modern Kyoto machiya restoration analysis](/architecture/modern-kyoto-machiya) and [warm Scandinavian reduction philosophy](/philosophy/warm-scandinavian-reduction).`,
   },
   {
-    id: 'resilient-design-systems-tokens',
-    slug: 'designing-resilient-design-systems',
-    title: 'Designing Resilient Design Systems: Token Architecture and Spatial Harmony',
-    subtitle: 'Bridging the divide between product design and engineering with rigorous design tokens.',
-    excerpt: 'How leading design teams structure systematic color ramps, fluid type scales, and predictable spatial tokens to maintain consistency across dozens of web products.',
-    coverImage: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&h=630&q=80',
-    coverImageAlt: 'Minimalist designer desk with color swatches, typography specimens, and digital tablets',
-    category: 'Design Systems',
-    tags: ['Design Systems', 'CSS', 'Tailwind', 'Typography', 'UI/UX'],
-    author: INITIAL_AUTHORS.elena,
-    publishedAt: '2026-03-12T16:00:00Z',
-    updatedAt: '2026-03-14T08:00:00Z',
-    readingTimeMinutes: 5,
-    wordCount: 1100,
+    id: 'kura-flush-joinery-concealed-storage',
+    slug: 'flush-joinery-concealed-storage',
+    routePath: '/millwork/flush-joinery-concealed-storage',
+    title: 'Flush Joinery & Concealed Storage: Design Guide | KURA',
+    subtitle: 'Precision shadow gap reveals, coplanar hardware engineering, and continuous grain veneer sequencing in quiet spaces.',
+    excerpt: 'Discover how flush joinery, shadow gap reveals, and concealed pocket doors eliminate visual clutter to craft seamless, quiet architectural interior volumes.',
+    coverImage: 'https://images.unsplash.com/photo-1541123437800-1bb1317badc2?auto=format&fit=crop&w=1200&h=800&q=80',
+    coverImageAlt: 'Minimalist living room wall featuring sequence-matched white oak flush joinery with concealed push-latches and recessed ceiling shadow gap reveal',
+    coverImageWidth: 1200,
+    coverImageHeight: 800,
+    category: 'Millwork',
+    tags: ['Flush Joinery', 'Concealed Storage', 'Architectural Millwork', 'Shadow Gaps', 'Minimalist Cabinetry'],
+    author: INITIAL_AUTHORS.kenzo,
+    publishedAt: '2026-03-28T14:15:00Z',
+    updatedAt: '2026-04-06T09:00:00Z',
+    readingTimeMinutes: 7,
+    wordCount: 1610,
     featured: false,
     trending: false,
-    views: 8900,
-    claps: 340,
+    views: 14200,
+    claps: 610,
     seo: {
-      metaTitle: 'Resilient Design Systems: Token Architecture & Harmony',
-      metaDescription: 'Learn how to structure systematic color ramps, fluid typography scales, and spatial tokens to build consistent, accessible digital product interfaces.',
-      keywords: ['Design Systems', 'Design Tokens', 'Tailwind CSS', 'Typography', 'UI UX'],
-      canonicalUrl: 'https://luminablog.vercel.app/#post/designing-resilient-design-systems',
-      ogImage: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&h=630&q=80',
+      metaTitle: 'Flush Joinery & Concealed Storage: Design Guide | KURA',
+      metaDescription: 'Discover how flush joinery, shadow gap reveals, and concealed pocket doors eliminate visual clutter to craft seamless, quiet architectural interior volumes.',
+      mainKeyword: 'Flush Joinery & Concealed Storage',
+      relatedKeywords: [
+        'architectural shadow gap reveal',
+        'handleless flush cabinetry hardware',
+        'continuous wood veneer grain matching',
+        'concealed pivot door systems',
+        'minimalist interior millwork details',
+      ],
+      searchVolume: '300–900 /mo',
+      keywordDifficulty: '10–25 (Low)',
+      keywords: [
+        'Flush Joinery & Concealed Storage',
+        'architectural shadow gap reveal',
+        'handleless flush cabinetry hardware',
+        'continuous wood veneer grain matching',
+        'concealed pivot door systems',
+        'minimalist interior millwork details',
+      ],
+      canonicalUrl: 'https://luminablog.vercel.app/millwork/flush-joinery-concealed-storage',
+      ogImage: 'https://images.unsplash.com/photo-1541123437800-1bb1317badc2?auto=format&fit=crop&w=1200&h=630&q=80',
+      twitterCardType: 'summary_large_image',
+      structuredDataType: 'TechArticle',
+    },
+    aeoQuestions: [
+      {
+        id: 'what-is-flush-joinery',
+        question: 'What is flush architectural joinery?',
+        directAnswer: 'Flush architectural joinery is a custom woodworking technique where cabinet faces, interior passage doors, and wall paneling align on an unbroken coplanar plane, completely eliminating visible frames, handles, and projecting hardware.',
+      },
+      {
+        id: 'flush-door-tolerances',
+        question: 'What site tolerance is required for seamless flush door reveals?',
+        directAnswer: 'Seamless flush door reveals require strict framing tolerances of 2mm to 3mm, paired with 3D-adjustable concealed pivot hinges that allow microscopic vertical, lateral, and depth recalibration.',
+      },
+      {
+        id: 'how-shadow-gaps-work',
+        question: 'How do shadow gap reveals prevent seasonal timber movement defects?',
+        directAnswer: 'An engineered shadow gap (typically 6mm to 12mm wide) provides a controlled expansion perimeter that absorbs the natural swelling and shrinking of timber caused by relative humidity changes without cracking adjacent drywall or plaster.',
+      },
+      {
+        id: 'what-hardware-systems',
+        question: 'What concealed hardware systems enable touch-latch handleless cabinetry?',
+        directAnswer: 'Concealed handleless millwork utilizes concealed 3D-adjustable European cup hinges, mechanical push-to-open latches (tip-on mechanisms), magnetic acoustic dampers, and heavy-duty concealed architectural pivot hinges rated up to 100kg.',
+      },
+      {
+        id: 'grain-matching-veneer',
+        question: 'How does continuous grain matching enhance minimalist wall paneling?',
+        directAnswer: 'Sequence-matched architectural veneer flitches ensure that natural timber grain flows horizontally or vertically across adjoining drawer fronts, cupboard doors, and hidden portals, creating the optical illusion of a single sculpted timber volume.',
+      },
+    ],
+    tableOfContents: [
+      { id: 'what-is-flush-joinery', text: 'What is flush architectural joinery?', level: 2 },
+      { id: 'flush-door-tolerances', text: 'What site tolerance is required for seamless flush door reveals?', level: 3 },
+      { id: 'how-shadow-gaps-work', text: 'How do shadow gap reveals prevent seasonal timber movement defects?', level: 2 },
+      { id: 'what-hardware-systems', text: 'What concealed hardware systems enable touch-latch handleless cabinetry?', level: 2 },
+      { id: 'grain-matching-veneer', text: 'How does continuous grain matching enhance minimalist wall paneling?', level: 2 },
+    ],
+    content: `## What is flush architectural joinery? {#what-is-flush-joinery}
+
+:::aeo-answer
+**Direct Answer:** Flush architectural joinery is a custom woodworking technique where cabinet faces, interior passage doors, and wall paneling align on an unbroken coplanar plane, completely eliminating visible frames, handles, and projecting hardware.
+:::
+
+In conventional residential construction, casework and door frames project 15mm to 35mm proud of the wall, subdivided by baseboards and architraves. Flush joinery eliminates these visual interruptions by treating millwork not as freestanding furniture, but as an integral tectonic partition.
+
+When cabinetry merges seamlessly with room boundaries, spatial perception expands dramatically. Entire utility rooms, pantries, and wardrobes disappear behind warm wood planes, reducing visual noise and fostering cognitive calm.
+
+### What site tolerance is required for seamless flush door reveals? {#flush-door-tolerances}
+
+:::aeo-answer
+**Direct Answer:** Seamless flush door reveals require strict framing tolerances of 2mm to 3mm, paired with 3D-adjustable concealed pivot hinges that allow microscopic vertical, lateral, and depth recalibration.
+:::
+
+Because conventional trim and casing exist primarily to conceal sloppy rough-framing margins, eliminating trim demands structural millwork framing built to cabinetmaker tolerances. Sub-frames are anchored to reinforced structural studs using micro-adjustable standoff bolts.
+
+![Sequence matched white oak architectural millwork with concealed touch latches and shadow gaps](https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&h=700&q=80)
+
+## How do shadow gap reveals prevent seasonal timber movement defects? {#how-shadow-gaps-work}
+
+:::aeo-answer
+**Direct Answer:** An engineered shadow gap (typically 6mm to 12mm wide) provides a controlled expansion perimeter that absorbs the natural swelling and shrinking of timber caused by relative humidity changes without cracking adjacent drywall or plaster.
+:::
+
+Solid wood and veneered substrates expand and contract perpendicular to the grain as relative humidity oscillates between dry winter heating and humid summer weather:
+
+- **The Problem of Direct Butt Joints**: Butting timber panels directly against gypsum plaster causes perimeter caulking to tear and paint to hairline-fracture within 12 months.
+- **The Shadow Gap Solution**: By leaving a precise 10mm recessed negative reveal painted matte charcoal or recessed with black aluminum profiles, the shadow conceals minor expansion gaps. The eye perceives a deliberate graphic demarcation rather than an uncontrolled defect.
+
+## What concealed hardware systems enable touch-latch handleless cabinetry? {#what-hardware-systems}
+
+:::aeo-answer
+**Direct Answer:** Concealed handleless millwork utilizes concealed 3D-adjustable European cup hinges, mechanical push-to-open latches (tip-on mechanisms), magnetic acoustic dampers, and heavy-duty concealed architectural pivot hinges rated up to 100kg.
+:::
+
+Achieving zero-handle planar perfection requires precision engineering behind the face panel:
+
+1. **Integrated Push-to-Open Latches**: Mechanical or synchronized electromechanical push-latches require only a 2mm depress stroke to pop doors open smoothly.
+2. **Concealed Pivot Hinges (FritsJurgens / SOSS)**: Mortised entirely within the door leaf and header, floor-to-ceiling pivot doors swing silently without floor threshold pins or visible jambs.
+3. **Magnetic Catch Latches**: Rare-earth magnetic catches ensure doors pull flush against internal neoprene acoustic seals without metallic clicking sounds.
+
+## How does continuous grain matching enhance minimalist wall paneling? {#grain-matching-veneer}
+
+:::aeo-answer
+**Direct Answer:** Sequence-matched architectural veneer flitches ensure that natural timber grain flows horizontally or vertically across adjoining drawer fronts, cupboard doors, and hidden portals, creating the optical illusion of a single sculpted timber volume.
+:::
+
+Standard production millwork cuts veneer sheets randomly, resulting in disjointed grain lines that disrupt wall planes. Architectural grain matching pairs consecutive veneer leaves sliced from the same log (*flitch*):
+
+- **Slip Matching**: Successive leaves laid side-by-side produce repeating grain rhythms with minimal color variance.
+- **Book Matching**: Alternate leaves flipped like open book pages produce symmetrical, mirrored grain cathedral patterns.
+- **End-to-End Sequencing**: Vertical grain continues unbroken from floor plinth to ceiling shadow gap, establishing soaring verticality.
+
+Flush millwork pairs harmoniously with [breathable lime wash vertical surfaces](/materials/microcement-lime-wash-surfaces) to create quiet, continuous planes celebrated in [warm Scandinavian reduction](/philosophy/warm-scandinavian-reduction).`,
+  },
+  {
+    id: 'kura-warm-scandinavian-reduction',
+    slug: 'warm-scandinavian-reduction',
+    routePath: '/philosophy/warm-scandinavian-reduction',
+    title: 'Warm Scandinavian Reduction: Architecture Guide | KURA',
+    subtitle: 'Harmonizing Nordic hygge with Japanese wabi-sabi through raw materiality, natural daylight, and understated craftsmanship.',
+    excerpt: 'Explore warm Scandinavian reduction in contemporary design: balancing serene minimalism, tactile natural materials, warm neutral palettes, and daylight rhythm.',
+    coverImage: 'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=1200&h=800&q=80',
+    coverImageAlt: 'Serene warm Scandinavian dining space with solid soap-finished white oak table, woven paper cord chairs, and indirect natural daylight',
+    coverImageWidth: 1200,
+    coverImageHeight: 800,
+    category: 'Philosophy',
+    tags: ['Scandinavian Reduction', 'Japandi Philosophy', 'Tactile Minimalism', 'Daylight Architecture', 'Wabi-Sabi'],
+    author: INITIAL_AUTHORS.astrid,
+    publishedAt: '2026-04-01T09:00:00Z',
+    updatedAt: '2026-04-07T11:30:00Z',
+    readingTimeMinutes: 8,
+    wordCount: 1690,
+    featured: false,
+    trending: true,
+    views: 22400,
+    claps: 940,
+    seo: {
+      metaTitle: 'Warm Scandinavian Reduction: Architecture Guide | KURA',
+      metaDescription: 'Explore warm Scandinavian reduction in contemporary design: balancing serene minimalism, tactile natural materials, warm neutral palettes, and daylight rhythm.',
+      mainKeyword: 'Warm Scandinavian Reduction',
+      relatedKeywords: [
+        'Japandi interior design philosophy',
+        'tactile minimalist architecture',
+        'indirect architectural warm lighting',
+        'soap-finished oak furniture care',
+        'wabi-sabi natural material palette',
+      ],
+      searchVolume: '500–1,600 /mo',
+      keywordDifficulty: '15–30 (Low)',
+      keywords: [
+        'Warm Scandinavian Reduction',
+        'Japandi interior design philosophy',
+        'tactile minimalist architecture',
+        'indirect architectural warm lighting',
+        'soap-finished oak furniture care',
+        'wabi-sabi natural material palette',
+      ],
+      canonicalUrl: 'https://luminablog.vercel.app/philosophy/warm-scandinavian-reduction',
+      ogImage: 'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=1200&h=630&q=80',
       twitterCardType: 'summary_large_image',
       structuredDataType: 'BlogPosting',
     },
-    tableOfContents: [
-      { id: 'the-token-hierarchy', text: '1. The 3-Tier Token Hierarchy', level: 2 },
-      { id: 'fluid-typography', text: '2. Fluid Editorial Typography', level: 2 },
-      { id: 'color-palettes-dark-mode', text: '3. Dark Mode & Contrast Compliance', level: 2 },
+    aeoQuestions: [
+      {
+        id: 'what-defines-warm-reduction',
+        question: 'What defines warm Scandinavian reduction in contemporary architecture?',
+        directAnswer: 'Warm Scandinavian reduction is an architectural ethos that strips away non-essential ornament while infusing spaces with organic warmth through natural soap-treated oak, tactile bouclé linen, unpolished travertine, and low-contrast mineral palettes.',
+      },
+      {
+        id: 'soap-finish-timber',
+        question: 'Why is soap-finished timber preferred over synthetic lacquers?',
+        directAnswer: 'Natural soap finishes leave timber pores completely open to breathe and maintain a velvety matte hand feel without artificial gloss, amber discoloration, or chemical off-gassing.',
+      },
+      {
+        id: 'how-japandi-synthesizes',
+        question: 'How does Japandi design synthesize Japanese wabi-sabi with Nordic hygge?',
+        directAnswer: 'Japandi fuses Japanese appreciation for impermanence, raw organic textures, and dark timber shadows with Nordic commitments to democratic ergonomics, luminous daylight capture, and cozy tactile warmth.',
+      },
+      {
+        id: 'why-indirect-lighting',
+        question: 'Why is indirect ambient lighting fundamental to reductive interiors?',
+        directAnswer: 'Reductive architecture replaces aggressive central ceiling downlights with low-glare indirect ambient lighting (2400K to 2700K) that grazes textured lime plaster walls and washes floors in gentle, glare-free illumination.',
+      },
+      {
+        id: 'material-palette-serenity',
+        question: 'Which color temperature and material palette create architectural serenity?',
+        directAnswer: 'Architectural serenity is achieved through low-contrast warm neutrals (bone, limestone gray, oat linen, bleached walnut) balanced with dark charred timber accents under 2700K warm illumination.',
+      },
     ],
-    content: `Design systems are often misunderstood as mere component libraries. In reality, a design system is a shared vocabulary that encodes brand personality, accessibility mandates, and operational efficiency into immutable tokens.
-
-## 1. The 3-Tier Token Hierarchy {#the-token-hierarchy}
-
-A robust system organizes tokens into three distinct tiers:
-
-1. **Global Tokens (Primitive)**: Context-agnostic definitions (e.g., \`slate-900\`, \`indigo-600\`, \`radius-lg\`).
-2. **Semantic Tokens (Alias)**: Purpose-driven abstractions (e.g., \`surface-primary\`, \`text-muted\`, \`border-interactive\`).
-3. **Component Tokens**: Tightly scoped rules for specific elements (e.g., \`button-primary-bg\`).
-
-By authoring components exclusively against semantic tokens, themes and brand overhauls can be applied globally in minutes without breaking underlying components.
-
-## 2. Fluid Editorial Typography {#fluid-typography}
-
-Editorial reading demands typographic discipline. Pair a high-legibility sans-serif for UI controls with an expressive serif font (such as Newsreader or Merriweather) for long-form narrative prose.
-
-Set body font sizes between 18px and 20px with a line-height ratio of 1.75 to 1.85. This provides sufficient vertical rhythm for sustained reading comfort across wide desktop displays and compact mobile screens.`,
-  },
-  {
-    id: 'building-llm-workflows-latency',
-    slug: 'building-llm-powered-workflows-latency',
-    title: 'Building LLM-Powered Workflows: Prompt Chaining, Structured Outputs, and Speed',
-    subtitle: 'Engineering predictable, production-grade AI interactions with low latency and rigorous validation.',
-    excerpt: 'Learn the architectural principles for orchestrating generative AI pipelines, enforcing schema validation with Zod, and slashing end-to-end latency.',
-    coverImage: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&h=630&q=80',
-    coverImageAlt: 'Abstract 3D digital neural network visualization glowing with iridescent cyan and purple gradients',
-    category: 'Artificial Intelligence',
-    tags: ['LLM Workflow Orchestration', 'Zod structured outputs', 'prompt chaining examples', 'AI workflow automation with TypeScript', 'LLM latency optimization'],
-    author: INITIAL_AUTHORS.sophia,
-    publishedAt: '2026-03-05T13:45:00Z',
-    updatedAt: '2026-03-10T11:00:00Z',
-    readingTimeMinutes: 8,
-    wordCount: 1560,
-    featured: false,
-    trending: true,
-    views: 15400,
-    claps: 710,
-    seo: {
-      metaTitle: 'LLM Workflow Orchestration: Prompt Chaining & Zod Outputs',
-      metaDescription: 'Master LLM workflow orchestration: Zod structured outputs, prompt chaining examples, AI workflow automation with TypeScript, and latency optimization.',
-      mainKeyword: 'LLM Workflow Orchestration',
-      relatedKeywords: [
-        'Zod structured outputs',
-        'prompt chaining examples',
-        'AI workflow automation with TypeScript',
-        'LLM output validation',
-        'AI agent orchestration',
-        'LLM latency optimization',
-      ],
-      searchVolume: '50–400 /mo',
-      keywordDifficulty: '5–30 (Very Low)',
-      keywords: [
-        'LLM Workflow Orchestration',
-        'Zod structured outputs',
-        'prompt chaining examples',
-        'AI workflow automation with TypeScript',
-        'LLM output validation',
-        'AI agent orchestration',
-        'LLM latency optimization',
-      ],
-      canonicalUrl: 'https://luminablog.vercel.app/#post/building-llm-powered-workflows-latency',
-      ogImage: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&h=630&q=80',
-      twitterCardType: 'summary_large_image',
-      structuredDataType: 'TechArticle',
-    },
     tableOfContents: [
-      { id: 'deterministic-outputs', text: '1. Zod Structured Outputs & LLM Output Validation', level: 2 },
-      { id: 'prompt-chaining-patterns', text: '2. Prompt Chaining Examples & AI Agent Orchestration', level: 2 },
-      { id: 'latency-reduction-techniques', text: '3. LLM Latency Optimization & AI Workflow Automation with TypeScript', level: 2 },
+      { id: 'what-defines-warm-reduction', text: 'What defines warm Scandinavian reduction in contemporary architecture?', level: 2 },
+      { id: 'soap-finish-timber', text: 'Why is soap-finished timber preferred over synthetic lacquers?', level: 3 },
+      { id: 'how-japandi-synthesizes', text: 'How does Japandi design synthesize Japanese wabi-sabi with Nordic hygge?', level: 2 },
+      { id: 'why-indirect-lighting', text: 'Why is indirect ambient lighting fundamental to reductive interiors?', level: 2 },
+      { id: 'material-palette-serenity', text: 'Which color temperature and material palette create architectural serenity?', level: 2 },
     ],
-    content: `Building basic AI demos is trivial; implementing mission-critical **LLM workflow orchestration** that operates deterministically within an enterprise SLA requires software engineering discipline.
+    content: `## What defines warm Scandinavian reduction in contemporary architecture? {#what-defines-warm-reduction}
 
-In this technical guide, we review **Zod structured outputs**, practical **prompt chaining examples**, real-world **AI workflow automation with TypeScript**, rigorous **LLM output validation**, multi-step **AI agent orchestration**, and strategies for **LLM latency optimization**.
+:::aeo-answer
+**Direct Answer:** Warm Scandinavian reduction is an architectural ethos that strips away non-essential ornament while infusing spaces with organic warmth through natural soap-treated oak, tactile bouclé linen, unpolished travertine, and low-contrast mineral palettes.
+:::
 
-## 1. Zod Structured Outputs & LLM Output Validation {#deterministic-outputs}
+Early twentieth-century modernist minimalism often produced sterile white boxes characterized by industrial stainless steel, cold glass, and gloss lacquer. Warm Scandinavian reduction consciously rejects that clinical austerity. 
 
-Never rely on natural language begging like *"Please return only valid JSON and no markdown formatting"*. Production systems employ **Zod structured outputs** and strict **LLM output validation**.
+Instead of emptiness for its own sake, this philosophy practices intentional reduction: removing visual clutter so that the inherent beauty of grain, natural shadow, and honest joinery can breathe.
 
-By feeding schema definitions directly into modern model APIs (such as Gemini 2.5/3 or OpenAI Structured Outputs), the model's logits are constrained during sampling, mathematically eliminating formatting hallucinations.
+### Why is soap-finished timber preferred over synthetic lacquers? {#soap-finish-timber}
 
-\`\`\`typescript
-// AI workflow automation with TypeScript using Zod schema validation
-import { z } from 'zod';
+:::aeo-answer
+**Direct Answer:** Natural soap finishes leave timber pores completely open to breathe and maintain a velvety matte hand feel without artificial gloss, amber discoloration, or chemical off-gassing.
+:::
 
-export const EditorialAnalysisSchema = z.object({
-  sentiment: z.enum(['positive', 'neutral', 'critical']),
-  keyTakeaways: z.array(z.string().min(10)),
-  confidenceScore: z.number().min(0).max(1),
-  suggestedTags: z.array(z.string()),
-});
+Traditional Scandinavian soap treatment utilizes natural white soap flakes dissolved in boiling water. As water evaporates, coconut and palm oil fatty acids penetrate the wood pores, creating a breathable stain-resistant barrier that can be cleansed and restored indefinitely without sanding away patina.
 
-export type EditorialAnalysis = z.infer<typeof EditorialAnalysisSchema>;
-\`\`\`
+![Warm Scandinavian dining room featuring soap finished white oak table and indirect natural light](https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=1200&h=700&q=80)
 
-## 2. Prompt Chaining Examples & AI Agent Orchestration {#prompt-chaining-patterns}
+## How does Japandi design synthesize Japanese wabi-sabi with Nordic hygge? {#how-japandi-synthesizes}
 
-Instead of asking a single prompt to perform complex reasoning, research, and synthesis all at once, modern **AI agent orchestration** decomposes tasks into sequential steps with **prompt chaining examples**:
+:::aeo-answer
+**Direct Answer:** Japandi fuses Japanese appreciation for impermanence, raw organic textures, and dark timber shadows with Nordic commitments to democratic ergonomics, luminous daylight capture, and cozy tactile warmth.
+:::
 
-1. **Step 1: Ingestion & Entity Extraction**: Extract core concepts from unstructured input into typed records.
-2. **Step 2: Fact Verification & Grounding**: Cross-reference extracted claims against internal vector indices or database truth.
-3. **Step 3: Synthesis & Formatting**: Produce the final client response guaranteed against the verified schema.
+Geographically separated by 8,000 kilometers, Scandinavian and Japanese design share a common reverence for organic craftsmanship:
 
-## 3. LLM Latency Optimization & AI Workflow Automation with TypeScript {#latency-reduction-techniques}
+- **Japanese Wabi-Sabi**: Finds profundity in impermanence, weathered cedar (*yakisugi*), asymmetry, and the subtle penumbra described in Jun'ichiro Tanizaki's *In Praise of Shadows*.
+- **Nordic Hygge**: Prioritizes psychological safety, tactile comfort, tactile wool upholstery, and luminous gathering spaces built to withstand dark sub-arctic winters.
 
-Users perceive latency acutely. To keep your automated workflows responsive:
-1. **Stream Responses**: Display streamed chunks immediately using server-sent events or WebSocket connections.
-2. **Model Tiering**: Route simple extraction tasks to fast Flash-tier models, reserving heavier reasoning models for multi-step synthesis.
-3. **Prompt Caching**: Store recurring static instructions and system prompts in persistent context caches.
-4. **LLM Latency Optimization**: Execute independent validation and embedding calls in parallel using \`Promise.all()\`.`,
-  },
-  {
-    id: 'distributed-state-crdts-event-sourcing',
-    slug: 'high-throughput-distributed-state-crdts',
-    title: 'High-Throughput Distributed State: Event Sourcing, CRDTs, and Optimistic UI',
-    subtitle: 'How modern collaborative applications handle conflicts, offline mode, and instant feedback.',
-    excerpt: 'An architectural exploration of conflict-free replicated data types, append-only logs, and building silky-smooth collaborative software.',
-    coverImage: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&h=630&q=80',
-    coverImageAlt: 'Abstract matrix of digital streams representing distributed nodes communicating in sync',
-    category: 'System Architecture',
-    tags: ['Architecture', 'Distributed Systems', 'CRDTs', 'Databases', 'Real-Time'],
-    author: INITIAL_AUTHORS.elena,
-    publishedAt: '2026-02-22T10:00:00Z',
-    updatedAt: '2026-02-25T14:00:00Z',
-    readingTimeMinutes: 10,
-    wordCount: 1720,
-    featured: false,
-    trending: false,
-    views: 11200,
-    claps: 490,
-    seo: {
-      metaTitle: 'Distributed State: Event Sourcing, CRDTs & Optimistic UI',
-      metaDescription: 'Explore Conflict-Free Replicated Data Types (CRDTs), event sourcing, and optimistic UI patterns for high-throughput real-time web applications.',
-      keywords: ['Distributed Systems', 'CRDTs', 'Event Sourcing', 'Optimistic UI', 'Realtime'],
-      canonicalUrl: 'https://luminablog.vercel.app/#post/high-throughput-distributed-state-crdts',
-      ogImage: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&h=630&q=80',
-      twitterCardType: 'summary_large_image',
-      structuredDataType: 'TechArticle',
-    },
-    tableOfContents: [
-      { id: 'the-limits-of-crud', text: '1. Why CRUD Fails in Collaborative Systems', level: 2 },
-      { id: 'understanding-crdts', text: '2. The Mathematics of CRDTs', level: 2 },
-      { id: 'optimistic-mutation-patterns', text: '3. Ergonomic Optimistic Mutations', level: 2 },
-    ],
-    content: `When two users edit the same document simultaneously while on flaky mobile internet connections, classic database transactions (ACID with pessimistic locking) degrade into deadlock or silent data overwrites.
+The synthesis—often termed *Japandi*—melds the low-slung, grounded horizon lines of Japanese tatami living with the ergonomic warmth and light-diffusing blonde woods of Scandinavian cabinetmakers.
 
-Enter CRDTs (Conflict-free Replicated Data Types) and Event Sourcing: mathematical foundations that guarantee convergence across distributed replicas without requiring centralized lock coordination.`,
+## Why is indirect ambient lighting fundamental to reductive interiors? {#why-indirect-lighting}
+
+:::aeo-answer
+**Direct Answer:** Reductive architecture replaces aggressive central ceiling downlights with low-glare indirect ambient lighting (2400K to 2700K) that grazes textured lime plaster walls and washes floors in gentle, glare-free illumination.
+:::
+
+Nothing shatters architectural serenity faster than glare from high-output recessed ceiling downlights. In reductive spaces, lighting is treated as a sculpted layer:
+
+1. **Cove and Reveal Grazing**: Linear LED strips (2400K, 95+ CRI) tucked into ceiling shadow gaps wash downward over textured lime wash plaster, revealing hand-troweled undulations.
+2. **Low-Level Luminaires**: Portable, rechargeable paper lanterns (such as Isamu Noguchi's Akari lamps) pool warm illumination at sitting height rather than eye level.
+3. **Task-Specific Precision**: Dimmable, narrow-beam brass reading sconces provide functional illumination only where hands hold books or coffee.
+
+## Which color temperature and material palette create architectural serenity? {#material-palette-serenity}
+
+:::aeo-answer
+**Direct Answer:** Architectural serenity is achieved through low-contrast warm neutrals (bone, limestone gray, oat linen, bleached walnut) balanced with dark charred timber accents under 2700K warm illumination.
+:::
+
+Achieving visual tranquility requires restricting the color palette to non-competing mineral and botanical tones:
+
+- **Soap-Treated White Oak**: European oak treated with traditional natural soap flakes rather than yellowing polyurethane, maintaining a velvety matte, near-raw tactile touch.
+- **Unfilled Roman Travertine**: Porous, matte stone cut along the vein, celebrating natural geological voids.
+- **Unbleached Belgian Linen**: Heavyweight natural drapery that filters harsh afternoon sun into gentle, milky daylight.
+
+The quiet discipline of Scandinavian reduction finds physical expression in [precision flush joinery millwork](/millwork/flush-joinery-concealed-storage) and passive climatic elements like [Kyoto machiya tsuboniwa courtyards](/architecture/modern-kyoto-machiya).`,
   },
 ];
 
 export const INITIAL_COMMENTS: Comment[] = [
   {
-    id: 'c-1',
-    postId: 'seo-modern-playbook-2026',
-    authorName: 'David Kester',
-    authorAvatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=128&h=128&q=80',
-    content: 'The breakdown of Schema.org JSON-LD is the clearest I have read. We recently audited our site and realized our breadcrumbs lacked position indices. Once fixed, Google picked them up within 48 hours!',
-    createdAt: '2026-03-29T10:30:00Z',
-    likes: 24,
+    id: 'k-c1',
+    postId: 'kura-modern-kyoto-machiya',
+    authorName: 'Tadashi Oka',
+    authorAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=128&h=128&q=80',
+    content: 'The explanation of the tsuboniwa microclimatic chimney effect is brilliant. We retrofitted our 1922 Gion machiya with radiant floor screed and preserved the cedar joinery. The natural air draft in July is astonishing.',
+    createdAt: '2026-04-03T09:20:00Z',
+    likes: 38,
   },
   {
-    id: 'c-2',
-    postId: 'seo-modern-playbook-2026',
-    authorName: 'Sarah Jenkins',
-    authorAvatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=128&h=128&q=80',
-    content: 'The note about canonical tags is spot on. We had issues with marketing UTM campaign tags creating duplicate indexation entries until we forced absolute self-referencing canonicals.',
-    createdAt: '2026-03-30T14:10:00Z',
-    likes: 18,
-  },
-  {
-    id: 'c-3',
-    postId: 'deploy-vercel-spa-hardening',
-    authorName: 'Alexander Hayes',
-    authorAvatar: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=128&h=128&q=80',
-    content: 'The vercel.json rewrite regex excluding assets and sitemap is brilliant. I previously had an issue where robots.txt was returning index.html. Thank you!',
-    createdAt: '2026-03-26T08:15:00Z',
-    likes: 31,
+    id: 'k-c2',
+    postId: 'kura-microcement-lime-wash-surfaces',
+    authorName: 'Maja Sorensen',
+    authorAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=128&h=128&q=80',
+    content: 'We paired bone microcement on the curbless shower floor with breathable lime wash on the ceiling and vanity walls. Zero mold issues over three Nordic winters.',
+    createdAt: '2026-04-05T15:40:00Z',
+    likes: 29,
   },
 ];

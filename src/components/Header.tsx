@@ -1,22 +1,21 @@
 import React from 'react';
 import { 
-  Sparkles, 
   Search, 
   Bookmark, 
-  PlusCircle, 
   ShieldCheck, 
   Sun, 
   Moon, 
-  ExternalLink,
-  UploadCloud,
-  FileCode2,
-  Menu,
-  X
+  UploadCloud, 
+  Menu, 
+  X,
+  Compass
 } from 'lucide-react';
+import { Category } from '../types/blog';
 
 interface HeaderProps {
   currentView: string;
-  onNavigate: (view: string, slug?: string) => void;
+  onNavigate: (view: string, routePath?: string) => void;
+  onSelectCategory?: (category: Category) => void;
   bookmarksCount: number;
   darkMode: boolean;
   onToggleDarkMode: () => void;
@@ -29,6 +28,7 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({
   currentView,
   onNavigate,
+  onSelectCategory,
   bookmarksCount,
   darkMode,
   onToggleDarkMode,
@@ -48,79 +48,88 @@ export const Header: React.FC<HeaderProps> = ({
   }, [searchOpen]);
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-slate-200/80 dark:border-slate-800/80 bg-white/90 dark:bg-slate-950/90 backdrop-blur-md transition-colors">
+    <header className="sticky top-0 z-40 w-full border-b border-stone-200 dark:border-zinc-800 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 gap-4">
           
-          {/* Brand Logo */}
+          {/* Brand Logo - KURA */}
           <div className="flex items-center gap-8">
             <button
               onClick={() => {
-                onNavigate('home');
+                onNavigate('home', '/');
                 setMobileMenuOpen(false);
               }}
               className="flex items-center gap-2.5 text-left group focus:outline-none"
+              title="Return to KURA architectural journal home"
             >
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-500 flex items-center justify-center text-white shadow-md shadow-indigo-500/25 group-hover:scale-105 transition-transform">
-                <Sparkles className="w-5 h-5" />
+              <div className="w-8 h-8 rounded-lg bg-stone-900 text-stone-100 dark:bg-stone-100 dark:text-stone-900 flex items-center justify-center font-bold font-mono text-sm shadow-xs group-hover:scale-105 transition-transform">
+                倉
               </div>
-              <div>
-                <span className="font-editorial text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5">
-                  Lumina
-                  <span className="text-xs font-sans font-semibold uppercase px-1.5 py-0.5 rounded bg-indigo-100 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800/50">
-                    Editorial
+              <div className="flex flex-col">
+                <span className="font-editorial text-2xl font-bold tracking-widest text-stone-900 dark:text-stone-100 flex items-center gap-1.5">
+                  KURA
+                  <span className="text-[10px] font-mono tracking-wider uppercase px-1.5 py-0.2 rounded bg-stone-100 dark:bg-zinc-800 text-stone-600 dark:text-zinc-400 border border-stone-200 dark:border-zinc-700">
+                    Journal
                   </span>
                 </span>
               </div>
             </button>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-1 text-sm font-medium">
+            <nav className="hidden lg:flex items-center gap-1 text-xs sm:text-sm font-medium">
               <button
-                onClick={() => onNavigate('home')}
+                onClick={() => onNavigate('home', '/')}
                 className={`px-3 py-1.5 rounded-lg transition-colors ${
                   currentView === 'home'
-                    ? 'text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/50 font-semibold'
-                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-900'
+                    ? 'text-stone-900 dark:text-stone-100 bg-stone-100 dark:bg-zinc-800/80 font-semibold'
+                    : 'text-stone-600 dark:text-zinc-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-50 dark:hover:bg-zinc-900'
                 }`}
               >
-                Stories
+                All Studies
               </button>
+
+              <button
+                onClick={() => onNavigate('post', '/architecture/modern-kyoto-machiya')}
+                className="px-3 py-1.5 rounded-lg transition-colors text-stone-600 dark:text-zinc-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-50 dark:hover:bg-zinc-900"
+                title="Examine modern Kyoto machiya architecture"
+              >
+                Architecture
+              </button>
+
+              <button
+                onClick={() => onNavigate('post', '/materials/microcement-lime-wash-surfaces')}
+                className="px-3 py-1.5 rounded-lg transition-colors text-stone-600 dark:text-zinc-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-50 dark:hover:bg-zinc-900"
+                title="Compare microcement and lime wash tactile surfaces"
+              >
+                Materials
+              </button>
+
+              <button
+                onClick={() => onNavigate('post', '/millwork/flush-joinery-concealed-storage')}
+                className="px-3 py-1.5 rounded-lg transition-colors text-stone-600 dark:text-zinc-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-50 dark:hover:bg-zinc-900"
+                title="Explore flush joinery and concealed millwork"
+              >
+                Millwork
+              </button>
+
+              <button
+                onClick={() => onNavigate('post', '/philosophy/warm-scandinavian-reduction')}
+                className="px-3 py-1.5 rounded-lg transition-colors text-stone-600 dark:text-zinc-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-50 dark:hover:bg-zinc-900"
+                title="Study warm Scandinavian reduction principles"
+              >
+                Philosophy
+              </button>
+
               <button
                 onClick={onOpenSeoInspector}
-                className="px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-900"
-                title="Open SEO & Schema Analyzer"
+                className="px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 text-stone-600 dark:text-zinc-400 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-stone-50 dark:hover:bg-zinc-900"
+                title="Inspect Technical SEO & AEO Structured Data"
               >
-                <ShieldCheck className="w-4 h-4 text-emerald-500" />
-                <span>SEO Inspector</span>
-                <span className="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400 border border-emerald-300/40">
-                  A+ Grade
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                <span>SEO & AEO Auditor</span>
+                <span className="text-[10px] font-mono font-bold uppercase px-1.5 py-0.2 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300">
+                  100%
                 </span>
-              </button>
-              <button
-                onClick={onOpenVercelDeploy}
-                className="px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-900"
-                title="Vercel Deployment Readiness & Export Guide"
-              >
-                <UploadCloud className="w-4 h-4 text-indigo-500" />
-                <span>Vercel Deploy</span>
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              </button>
-              <button
-                onClick={() => onNavigate('bookmarks')}
-                className={`px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 ${
-                  currentView === 'bookmarks'
-                    ? 'text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/50 font-semibold'
-                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-900'
-                }`}
-              >
-                <Bookmark className="w-4 h-4" />
-                <span>Saved</span>
-                {bookmarksCount > 0 && (
-                  <span className="text-[10px] font-bold px-1.5 py-0.2 rounded-full bg-indigo-600 text-white">
-                    {bookmarksCount}
-                  </span>
-                )}
               </button>
             </nav>
           </div>
@@ -130,20 +139,20 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Search Input or Toggle */}
             <div className="relative">
               {searchOpen ? (
-                <div className="flex items-center bg-slate-100 dark:bg-slate-900 rounded-lg px-2.5 py-1.5 border border-slate-300 dark:border-slate-700 w-48 sm:w-64 transition-all">
-                  <Search className="w-4 h-4 text-slate-400 shrink-0 mr-2" />
+                <div className="flex items-center bg-stone-100 dark:bg-zinc-900 rounded-lg px-2.5 py-1.5 border border-stone-300 dark:border-zinc-700 w-48 sm:w-64 transition-all">
+                  <Search className="w-3.5 h-3.5 text-stone-400 shrink-0 mr-2" />
                   <input
                     ref={searchInputRef}
                     type="text"
                     value={searchQuery}
                     onChange={(e) => onSearchChange(e.target.value)}
-                    placeholder="Search articles, tags, authors..."
-                    className="w-full bg-transparent text-xs sm:text-sm text-slate-900 dark:text-slate-100 focus:outline-none"
+                    placeholder="Search machiya, microcement, joinery..."
+                    className="w-full bg-transparent text-xs sm:text-sm text-stone-900 dark:text-stone-100 focus:outline-none font-editorial"
                   />
                   {searchQuery && (
                     <button
                       onClick={() => onSearchChange('')}
-                      className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xs px-1"
+                      className="text-stone-400 hover:text-stone-600 dark:hover:text-stone-200 text-xs px-1"
                     >
                       Clear
                     </button>
@@ -153,7 +162,7 @@ export const Header: React.FC<HeaderProps> = ({
                       setSearchOpen(false);
                       onSearchChange('');
                     }}
-                    className="ml-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
+                    className="ml-1 text-stone-400 hover:text-stone-600 dark:hover:text-stone-200"
                   >
                     <X className="w-3.5 h-3.5" />
                   </button>
@@ -161,50 +170,60 @@ export const Header: React.FC<HeaderProps> = ({
               ) : (
                 <button
                   onClick={() => setSearchOpen(true)}
-                  className="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors"
-                  aria-label="Search"
-                  title="Search articles"
+                  className="p-2 rounded-lg text-stone-600 dark:text-zinc-400 hover:bg-stone-100 dark:hover:bg-zinc-900 transition-colors"
+                  aria-label="Search architectural publications"
+                  title="Search publications"
                 >
                   <Search className="w-4 h-4" />
                 </button>
               )}
             </div>
 
-            {/* Dark / Light Toggle */}
+            {/* Reading List Bookmarks */}
+            <button
+              onClick={() => onNavigate('bookmarks', '#bookmarks')}
+              className={`p-2 rounded-lg transition-colors flex items-center gap-1 text-xs ${
+                currentView === 'bookmarks'
+                  ? 'text-stone-900 dark:text-stone-100 bg-stone-100 dark:bg-zinc-800'
+                  : 'text-stone-600 dark:text-zinc-400 hover:bg-stone-100 dark:hover:bg-zinc-900'
+              }`}
+              title="View saved architectural publications"
+            >
+              <Bookmark className="w-4 h-4" />
+              {bookmarksCount > 0 && (
+                <span className="text-[10px] font-mono font-bold px-1.5 py-0.2 rounded-full bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900">
+                  {bookmarksCount}
+                </span>
+              )}
+            </button>
+
+            {/* Theme Toggle */}
             <button
               onClick={onToggleDarkMode}
-              className="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors"
-              aria-label="Toggle Theme"
-              title="Toggle dark / light theme"
+              className="p-2 rounded-lg text-stone-600 dark:text-zinc-400 hover:bg-stone-100 dark:hover:bg-zinc-900 transition-colors"
+              aria-label="Toggle dark and light reading theme"
+              title="Toggle reading theme"
             >
               {darkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4" />}
             </button>
 
-            {/* Write New Post */}
-            <button
-              onClick={() => onNavigate('new-post')}
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900 border border-slate-200 dark:border-slate-800 transition-colors"
-            >
-              <PlusCircle className="w-4 h-4 text-indigo-500" />
-              <span>Write</span>
-            </button>
-
-            {/* Quick Deploy to Vercel Button */}
+            {/* Vercel Deploy Button */}
             <button
               onClick={onOpenVercelDeploy}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold bg-slate-900 hover:bg-slate-800 text-white dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100 shadow-sm transition-all hover:scale-105 active:scale-95"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-stone-900 hover:bg-stone-800 text-white dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-stone-200 transition-all shadow-xs"
+              title="Open Vercel deployment assistant"
             >
-              <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 1155 1000">
+              <svg className="w-3 h-3 fill-current" viewBox="0 0 1155 1000">
                 <path d="m577.3 0 577.4 1000H0z" />
               </svg>
-              <span>Vercel Ready</span>
+              <span>Vercel Edge</span>
             </button>
 
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900"
-              aria-label="Open menu"
+              className="lg:hidden p-2 rounded-lg text-stone-600 dark:text-zinc-400 hover:bg-stone-100 dark:hover:bg-zinc-900"
+              aria-label="Toggle architectural navigation menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -214,67 +233,65 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 pt-2 pb-4 space-y-2">
+        <div className="lg:hidden border-b border-stone-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 px-4 pt-2 pb-4 space-y-1 text-sm font-medium">
           <button
             onClick={() => {
-              onNavigate('home');
+              onNavigate('home', '/');
               setMobileMenuOpen(false);
             }}
-            className="w-full text-left px-3 py-2 rounded-lg font-medium text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900"
+            className="w-full text-left px-3 py-2 rounded-lg text-stone-800 dark:text-zinc-200 hover:bg-stone-100 dark:hover:bg-zinc-900"
           >
-            All Stories
+            All Architectural Studies
+          </button>
+          <button
+            onClick={() => {
+              onNavigate('post', '/architecture/modern-kyoto-machiya');
+              setMobileMenuOpen(false);
+            }}
+            className="w-full text-left px-3 py-2 rounded-lg text-stone-800 dark:text-zinc-200 hover:bg-stone-100 dark:hover:bg-zinc-900"
+          >
+            Architecture: Modern Kyoto Machiya
+          </button>
+          <button
+            onClick={() => {
+              onNavigate('post', '/materials/microcement-lime-wash-surfaces');
+              setMobileMenuOpen(false);
+            }}
+            className="w-full text-left px-3 py-2 rounded-lg text-stone-800 dark:text-zinc-200 hover:bg-stone-100 dark:hover:bg-zinc-900"
+          >
+            Materials: Microcement vs Lime Wash
+          </button>
+          <button
+            onClick={() => {
+              onNavigate('post', '/millwork/flush-joinery-concealed-storage');
+              setMobileMenuOpen(false);
+            }}
+            className="w-full text-left px-3 py-2 rounded-lg text-stone-800 dark:text-zinc-200 hover:bg-stone-100 dark:hover:bg-zinc-900"
+          >
+            Millwork: Flush Joinery & Concealed Storage
+          </button>
+          <button
+            onClick={() => {
+              onNavigate('post', '/philosophy/warm-scandinavian-reduction');
+              setMobileMenuOpen(false);
+            }}
+            className="w-full text-left px-3 py-2 rounded-lg text-stone-800 dark:text-zinc-200 hover:bg-stone-100 dark:hover:bg-zinc-900"
+          >
+            Philosophy: Warm Scandinavian Reduction
           </button>
           <button
             onClick={() => {
               onOpenSeoInspector();
               setMobileMenuOpen(false);
             }}
-            className="w-full text-left px-3 py-2 rounded-lg font-medium text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900 flex items-center justify-between"
+            className="w-full text-left px-3 py-2 rounded-lg text-emerald-700 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 flex items-center justify-between"
           >
             <span className="flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-emerald-500" />
-              SEO & Schema Inspector
+              <ShieldCheck className="w-4 h-4" /> SEO & AEO Auditor
             </span>
-            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+            <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950">
               Grade A+
             </span>
-          </button>
-          <button
-            onClick={() => {
-              onOpenVercelDeploy();
-              setMobileMenuOpen(false);
-            }}
-            className="w-full text-left px-3 py-2 rounded-lg font-medium text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900 flex items-center gap-2"
-          >
-            <UploadCloud className="w-4 h-4 text-indigo-500" />
-            Vercel Deployment Suite
-          </button>
-          <button
-            onClick={() => {
-              onNavigate('bookmarks');
-              setMobileMenuOpen(false);
-            }}
-            className="w-full text-left px-3 py-2 rounded-lg font-medium text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900 flex items-center justify-between"
-          >
-            <span className="flex items-center gap-2">
-              <Bookmark className="w-4 h-4" />
-              Saved Reading List
-            </span>
-            {bookmarksCount > 0 && (
-              <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-indigo-600 text-white">
-                {bookmarksCount}
-              </span>
-            )}
-          </button>
-          <button
-            onClick={() => {
-              onNavigate('new-post');
-              setMobileMenuOpen(false);
-            }}
-            className="w-full text-left px-3 py-2 rounded-lg font-medium text-sm text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 flex items-center gap-2"
-          >
-            <PlusCircle className="w-4 h-4" />
-            Write New Story
           </button>
         </div>
       )}
