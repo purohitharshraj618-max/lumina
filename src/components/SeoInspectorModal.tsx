@@ -233,6 +233,54 @@ export const SeoInspectorModal: React.FC<SeoInspectorModalProps> = ({
                 </div>
               </div>
 
+              {/* Target Keyword Strategy Card */}
+              {targetPost.seo.mainKeyword && (
+                <div className="p-5 rounded-2xl border border-indigo-200 dark:border-indigo-900/60 bg-gradient-to-r from-indigo-50/70 via-purple-50/40 to-pink-50/30 dark:from-indigo-950/30 dark:via-purple-950/20 dark:to-pink-950/10">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2.5 h-2.5 rounded-full bg-indigo-500 animate-pulse" />
+                      <h4 className="text-xs font-bold uppercase tracking-wider text-indigo-700 dark:text-indigo-300">
+                        Target Keyword Strategy
+                      </h4>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      {targetPost.seo.searchVolume && (
+                        <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-300/40">
+                          Search Vol: {targetPost.seo.searchVolume}
+                        </span>
+                      )}
+                      {targetPost.seo.keywordDifficulty && (
+                        <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-indigo-300/40">
+                          KD: {targetPost.seo.keywordDifficulty}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="text-lg font-bold text-slate-900 dark:text-white font-mono">
+                    &ldquo;{targetPost.seo.mainKeyword}&rdquo;
+                  </div>
+
+                  {targetPost.seo.relatedKeywords && targetPost.seo.relatedKeywords.length > 0 && (
+                    <div className="mt-3 pt-3 border-t border-indigo-100 dark:border-indigo-900/40">
+                      <div className="text-[11px] font-semibold text-slate-600 dark:text-slate-400 mb-1.5">
+                        Related Semantic Keywords:
+                      </div>
+                      <div className="flex flex-wrap gap-1.5">
+                        {targetPost.seo.relatedKeywords.map((kw) => (
+                          <span
+                            key={kw}
+                            className="text-xs font-mono px-2 py-0.5 rounded-md bg-white dark:bg-slate-900 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-800/60 shadow-2xs"
+                          >
+                            {kw}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
               {/* Detailed Breakdown List */}
               <div className="rounded-2xl border border-slate-200 dark:border-slate-800 divide-y divide-slate-100 dark:divide-slate-800 overflow-hidden bg-white dark:bg-slate-900/40">
                 <div className="px-5 py-3 bg-slate-50/80 dark:bg-slate-950/50 text-xs font-bold uppercase tracking-wider text-slate-500">

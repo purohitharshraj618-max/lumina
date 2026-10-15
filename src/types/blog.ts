@@ -22,6 +22,10 @@ export interface PostSeo {
   metaTitle: string;
   metaDescription: string;
   keywords: string[];
+  mainKeyword?: string;
+  relatedKeywords?: string[];
+  searchVolume?: string;
+  keywordDifficulty?: string;
   canonicalUrl: string;
   ogImage: string;
   twitterCardType: 'summary' | 'summary_large_image';

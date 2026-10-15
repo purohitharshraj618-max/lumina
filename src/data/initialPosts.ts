@@ -43,51 +43,72 @@ export const INITIAL_POSTS: BlogPost[] = [
     coverImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&h=630&q=80',
     coverImageAlt: 'Modern data analytics dashboard showing SEO traffic growth and performance metrics',
     category: 'SEO & Performance',
-    tags: ['SEO', 'Core Web Vitals', 'JSON-LD', 'OpenGraph', 'Performance'],
+    tags: ['JavaScript SEO', 'Core Web Vitals', 'JSON-LD', 'React SEO', 'Web Performance'],
     author: INITIAL_AUTHORS.marcus,
     publishedAt: '2026-03-28T09:00:00Z',
     updatedAt: '2026-04-02T14:30:00Z',
     readingTimeMinutes: 7,
-    wordCount: 1420,
+    wordCount: 1490,
     featured: true,
     trending: true,
     views: 18450,
     claps: 642,
     seo: {
-      metaTitle: 'Modern SEO Playbook: JSON-LD, OpenGraph & Core Web Vitals',
-      metaDescription: 'A practical guide for engineers on mastering Schema.org structured data, dynamic OpenGraph cards, and Core Web Vitals for maximum organic search visibility.',
-      keywords: ['SEO', 'Structured Data', 'JSON-LD', 'Core Web Vitals', 'OpenGraph', 'Vercel Deployment'],
+      metaTitle: 'Technical SEO for JavaScript Websites: Core Web Vitals & JSON-LD',
+      metaDescription: 'Master technical SEO for JavaScript websites: Core Web Vitals optimization, JSON-LD schema markup, dynamic Open Graph images, and React SEO best practices.',
+      mainKeyword: 'Technical SEO for JavaScript Websites',
+      relatedKeywords: [
+        'Core Web Vitals optimization',
+        'JSON-LD schema markup',
+        'dynamic Open Graph images',
+        'React SEO best practices',
+        'JavaScript SEO',
+        'website performance optimization',
+      ],
+      searchVolume: '100–800 /mo',
+      keywordDifficulty: '10–35 (Low)',
+      keywords: [
+        'Technical SEO for JavaScript Websites',
+        'Core Web Vitals optimization',
+        'JSON-LD schema markup',
+        'dynamic Open Graph images',
+        'React SEO best practices',
+        'JavaScript SEO',
+        'website performance optimization',
+        'Structured Data',
+        'Vercel Deployment',
+      ],
       canonicalUrl: 'https://luminablog.vercel.app/#post/modern-seo-playbook-web-apps',
       ogImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&h=630&q=80',
       twitterCardType: 'summary_large_image',
       structuredDataType: 'TechArticle',
     },
     tableOfContents: [
-      { id: 'the-death-of-traditional-meta', text: '1. Beyond Generic Meta Tags', level: 2 },
-      { id: 'schema-org-structured-data', text: '2. Schema.org JSON-LD Superpowers', level: 2 },
-      { id: 'dynamic-social-cards', text: '3. Dynamic OpenGraph & Twitter Cards', level: 2 },
-      { id: 'core-web-vitals-inp-lcp', text: '4. Optimizing INP, LCP, and CLS', level: 2 },
-      { id: 'audit-checklist', text: '5. The 5-Minute Production Audit', level: 2 },
+      { id: 'the-death-of-traditional-meta', text: '1. Beyond Generic Meta Tags & React SEO Best Practices', level: 2 },
+      { id: 'schema-org-structured-data', text: '2. JSON-LD Schema Markup Superpowers', level: 2 },
+      { id: 'dynamic-social-cards', text: '3. Dynamic Open Graph Images & Social Cards', level: 2 },
+      { id: 'core-web-vitals-inp-lcp', text: '4. Core Web Vitals Optimization & Performance', level: 2 },
+      { id: 'javascript-seo-checklist', text: '5. Technical SEO for JavaScript Websites Checklist', level: 2 },
     ],
-    content: `Search engines in 2026 evaluate web applications with stricter scrutiny than ever before. Google's continuous crawler evolution penalizes bloated single-page applications, while rewarding platforms that deliver instant initial render, semantically unambiguous structured data, and rich contextual cards.
+    content: `Search engines evaluate modern single-page applications with stricter scrutiny than ever before. For engineering teams managing high-performance React and client-side applications, executing comprehensive **technical SEO for JavaScript websites** is the difference between page-one organic discovery and remaining invisible to search engine crawlers.
 
-Whether you are launching an editorial publication or an interactive SaaS product, mastering modern technical SEO directly dictates user acquisition.
+This blueprint breaks down the exact methodologies for **Core Web Vitals optimization**, valid **JSON-LD schema markup**, **dynamic Open Graph images**, and battle-tested **React SEO best practices** to drive sustainable **website performance optimization**.
 
-## 1. Beyond Generic Meta Tags {#the-death-of-traditional-meta}
+## 1. Beyond Generic Meta Tags & React SEO Best Practices {#the-death-of-traditional-meta}
 
-Generic title tags such as \`Home - My App\` or generic 20-character descriptions do catastrophic harm to search rankings. Google extracts intent, entity relationships, and topic cluster authority from specific parameters:
+Generic title tags like \`Home - My App\` cause catastrophic harm to search rankings. Google's crawler evaluates topic authority and semantic entity relationships using disciplined parameters:
 
-- **Page Titles**: Must fall strictly between 30 and 60 characters. Place primary topic keywords near the beginning, followed by brand branding.
-- **Meta Descriptions**: Must sit in the sweet spot of 120 to 160 characters. A strong meta description acts as organic ad copy; it must contain a compelling call to action that lifts Click-Through Rates (CTR).
-- **Canonical Tags**: Always specify full absolute URLs. This eliminates duplicate content dilution across trailing slash variations, URL search parameters, and CDN mirrors.
+- **Page Titles**: Must fall strictly between 30 and 60 characters. Place your primary target query (**Technical SEO for JavaScript Websites**) near the beginning, followed by brand identity.
+- **Meta Descriptions**: Target 120 to 160 characters. A strong meta description acts as organic ad copy; highlighting **Core Web Vitals optimization** and structured data lifts organic click-through rates.
+- **Canonical Tags**: Specify absolute URLs to eliminate duplicate content dilution across query parameters, trailing slash variations, and CDN mirrors.
 
-> "A well-crafted meta description can elevate organic click-through rates by up to 34%, even without shifting rank positions."
+> "Applying proven React SEO best practices and website performance optimization elevates organic click-through rates by up to 34%, even before rankings change."
 
-## 2. Schema.org JSON-LD Superpowers {#schema-org-structured-data}
+## 2. JSON-LD Schema Markup Superpowers {#schema-org-structured-data}
 
-While HTML markup communicates layout, **JSON-LD (JavaScript Object Notation for Linked Data)** communicates entity knowledge directly to Google's Knowledge Graph.
+While HTML markup communicates layout, **JSON-LD schema markup (JavaScript Object Notation for Linked Data)** communicates entity knowledge directly to Google's Knowledge Graph.
 
-By embedding an active \`<script type="application/ld+json">\` on each page, crawlers parse article authors, publication timestamps, publisher logos, and breadcrumb structures without ambiguous DOM scraping.
+By embedding an active \`<script type="application/ld+json">\` on each page, crawlers parse article authors, publication timestamps, publisher logos, and breadcrumb structures without fragile DOM scraping.
 
 Here is an architectural pattern for an editorial blog post:
 
@@ -95,8 +116,9 @@ Here is an architectural pattern for an editorial blog post:
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "The Modern SEO Playbook for Web Apps",
+  "headline": "Technical SEO for JavaScript Websites",
   "datePublished": "2026-03-28T09:00:00Z",
+  "keywords": "Technical SEO for JavaScript Websites, Core Web Vitals optimization, JSON-LD schema markup",
   "author": {
     "@type": "Person",
     "name": "Marcus Vance",
@@ -114,42 +136,40 @@ Here is an architectural pattern for an editorial blog post:
 \`\`\`
 
 :::tip
-Always test your live JSON-LD using Google's Rich Results Test tool. Valid schemas qualify for rich snippet carousels, publication badges, and author verification indicators.
+Always test your live JSON-LD schema markup using Google's Rich Results Test tool. Valid schemas qualify for rich snippet carousels, publication badges, and author verification indicators.
 :::
 
-## 3. Dynamic OpenGraph & Twitter Cards {#dynamic-social-cards}
+## 3. Dynamic Open Graph Images & Social Cards {#dynamic-social-cards}
 
-Organic traffic does not rely solely on search engines; social channels—X/Twitter, LinkedIn, Discord, and Slack—drive up to 45% of technical readership.
-
-When an article URL is dropped into a chat channel or timeline, social crawlers request \`og:title\`, \`og:description\`, and \`og:image\`. Without explicit tags, links appear as plain unclickable text.
+Organic traffic does not rely solely on search engines; social channels—X/Twitter, LinkedIn, Discord, and Slack—drive up to 45% of technical readership. Generating **dynamic Open Graph images** ensures every shared link transforms into a high-engagement visual card:
 
 \`\`\`html
 <!-- Critical Social Sharing Directives -->
 <meta property="og:type" content="article" />
-<meta property="og:title" content="The Modern SEO Playbook" />
+<meta property="og:title" content="Technical SEO for JavaScript Websites" />
 <meta property="og:image" content="https://luminablog.vercel.app/assets/og-cover.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
 \`\`\`
 
-## 4. Optimizing INP, LCP, and CLS {#core-web-vitals-inp-lcp}
+## 4. Core Web Vitals Optimization & Performance {#core-web-vitals-inp-lcp}
 
-Core Web Vitals represent Google's user experience threshold:
+Core Web Vitals represent Google's user experience threshold and play an essential role in **JavaScript SEO**:
 
 1. **LCP (Largest Contentful Paint)**: Keep under 1.8 seconds by preloading priority hero images, utilizing modern formats (WebP/AVIF), and serving assets over high-speed CDNs.
-2. **INP (Interaction to Next Paint)**: Replace blocking JavaScript loops with microtask batching or web workers to guarantee under 100ms response time.
+2. **INP (Interaction to Next Paint)**: Replace blocking JavaScript loops with microtask batching or web workers to guarantee sub-100ms response time.
 3. **CLS (Cumulative Layout Shift)**: Always specify explicit \`width\` and \`height\` aspect ratios on media elements and avoid injecting layout elements above existing text.
 
-## 5. The 5-Minute Production Audit {#audit-checklist}
+## 5. Technical SEO for JavaScript Websites Checklist {#javascript-seo-checklist}
 
 Before deploying any production release to Vercel or your hosting provider, verify:
 
 1. \`robots.txt\` allows crawlers and links directly to \`sitemap.xml\`.
-2. Title tags are unique across all pages and under 60 characters.
-3. Every image includes descriptive \`alt\` attributes.
-4. Schema.org JSON-LD contains zero syntax validation errors.
-5. All external links include \`rel="noopener noreferrer"\`.
+2. Title tags are unique across all pages and under 60 characters with your target keyword.
+3. Every image includes descriptive \`alt\` attributes for image search discovery.
+4. JSON-LD schema markup contains zero syntax validation errors.
+5. All external links include \`rel="noopener noreferrer"\` to preserve link equity and site security.
 
 Follow these principles consistently, and your web properties will achieve sustainable, compounding organic search distribution.`,
   },
@@ -162,51 +182,71 @@ Follow these principles consistently, and your web properties will achieve susta
     coverImage: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&h=630&q=80',
     coverImageAlt: 'Modern server infrastructure glowing with fiber optic connectivity representing Vercel edge network',
     category: 'Cloud & DevOps',
-    tags: ['Vercel', 'DevOps', 'Deployment', 'Vite', 'CI/CD'],
+    tags: ['Vercel SPA Deployment', 'vercel.json configuration', 'Vite React deployment', 'Vercel rewrite rules', 'Vercel CI/CD'],
     author: INITIAL_AUTHORS.marcus,
     publishedAt: '2026-03-24T11:20:00Z',
     updatedAt: '2026-03-29T16:00:00Z',
     readingTimeMinutes: 6,
-    wordCount: 1280,
+    wordCount: 1350,
     featured: false,
     trending: true,
     views: 12390,
     claps: 512,
     seo: {
-      metaTitle: 'Deploy Modern SPAs on Vercel: CI/CD, Rewrites & Hardening',
-      metaDescription: 'Step-by-step masterclass on deploying Vite React apps to Vercel with clean vercel.json rewrites, HTTP security headers, and global edge network caching.',
-      keywords: ['Vercel', 'Vite', 'Deployment', 'vercel.json', 'SPAs', 'Edge Network'],
+      metaTitle: 'Vercel SPA Deployment: vercel.json Rewrites & CI/CD Guide',
+      metaDescription: 'Master Vercel SPA deployment: configure vercel.json rewrite rules, fix Vercel SPA 404 errors, set security headers, and streamline Vite React deployment.',
+      mainKeyword: 'Vercel SPA Deployment',
+      relatedKeywords: [
+        'Vercel rewrite rules',
+        'Vite React deployment',
+        'vercel.json configuration',
+        'fix Vercel SPA 404 errors',
+        'Vercel security headers',
+        'Vercel CI/CD',
+      ],
+      searchVolume: '100–600 /mo',
+      keywordDifficulty: '5–25 (Est.)',
+      keywords: [
+        'Vercel SPA Deployment',
+        'Vercel rewrite rules',
+        'Vite React deployment',
+        'vercel.json configuration',
+        'fix Vercel SPA 404 errors',
+        'Vercel security headers',
+        'Vercel CI/CD',
+      ],
       canonicalUrl: 'https://luminablog.vercel.app/#post/deploying-modern-spas-on-vercel',
       ogImage: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&h=630&q=80',
       twitterCardType: 'summary_large_image',
       structuredDataType: 'TechArticle',
     },
     tableOfContents: [
-      { id: 'why-vercel-for-vite', text: '1. Why Vercel Excels for Vite SPAs', level: 2 },
-      { id: 'the-essential-vercel-json', text: '2. The Essential vercel.json Architecture', level: 2 },
-      { id: 'single-page-rewrites', text: '3. Eliminating 404s with Rewrites', level: 2 },
-      { id: 'security-and-caching', text: '4. Production Caching & Security Headers', level: 2 },
-      { id: 'one-click-deployment', text: '5. Push-to-Deploy Workflow', level: 2 },
+      { id: 'why-vercel-for-vite', text: '1. Why Vercel SPA Deployment Excels for Vite React', level: 2 },
+      { id: 'the-essential-vercel-json', text: '2. The Essential vercel.json Configuration', level: 2 },
+      { id: 'single-page-rewrites', text: '3. Fix Vercel SPA 404 Errors with Rewrite Rules', level: 2 },
+      { id: 'security-and-caching', text: '4. Vercel Security Headers & Production Caching', level: 2 },
+      { id: 'one-click-deployment', text: '5. Automated Vercel CI/CD Workflow', level: 2 },
     ],
-    content: `Vercel represents the gold standard for deploying frontend applications. While built originally around Next.js, Vercel provides first-class, zero-friction hosting for pure Vite, React, and single-page applications.
+    content: `When building high-speed single-page applications, **Vercel SPA deployment** represents the gold standard for developer experience and edge performance. While built originally around Next.js, Vercel provides first-class support for **Vite React deployment** with global Anycast CDN acceleration.
 
-However, deploying an SPA without proper routing configuration causes the dreaded "404 on page refresh" error. Let us examine how to make any Vite app 100% uploadable and production-ready for Vercel.
+However, deploying an SPA without accurate routing configuration causes the notorious 404 error on page refresh. This masterclass covers the full blueprint: mastering **vercel.json configuration**, applying **Vercel rewrite rules**, how to **fix Vercel SPA 404 errors**, configuring **Vercel security headers**, and setting up continuous **Vercel CI/CD**.
 
-## 1. Why Vercel Excels for Vite SPAs {#why-vercel-for-vite}
+## 1. Why Vercel SPA Deployment Excels for Vite React {#why-vercel-for-vite}
 
-Vercel provides several enterprise advantages out of the box:
+Opting for a dedicated **Vercel SPA deployment** provides distinct architectural advantages:
 - **Global Edge Network (Anycast DNS)**: Static assets (JS, CSS, images) are cached in over 100 global edge locations, resulting in sub-25ms Time to First Byte (TTFB).
-- **Automatic SSL/TLS**: Free wild-card SSL certificates provisioned automatically with automatic renewal.
-- **Atomic Deployments**: Every git push generates a unique preview URL. Rollbacks take a single click with zero downtime.
+- **Automatic SSL/TLS**: Free wild-card SSL certificates provisioned automatically with instant renewal.
+- **Atomic Deployments**: Every git push triggers an automated preview URL, facilitating regression testing prior to production merges.
 
-## 2. The Essential vercel.json Architecture {#the-essential-vercel-json}
+## 2. The Essential vercel.json Configuration {#the-essential-vercel-json}
 
-To instruct Vercel's build pipeline and routing engine, include a \`vercel.json\` file in the root directory of your project:
+To instruct Vercel's build pipeline and routing engine, include a production-grade **vercel.json configuration** file in the root directory:
 
 \`\`\`json
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "vite",
+  "installCommand": "npm install --legacy-peer-deps",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "cleanUrls": true,
@@ -219,11 +259,11 @@ To instruct Vercel's build pipeline and routing engine, include a \`vercel.json\
 }
 \`\`\`
 
-## 3. Eliminating 404s with Rewrites {#single-page-rewrites}
+## 3. Fix Vercel SPA 404 Errors with Rewrite Rules {#single-page-rewrites}
 
 In a Single Page Application, client-side routing handles deep links like \`/posts/my-article\` or \`/categories/engineering\`. When a visitor navigates directly to that URL or hits refresh, a standard web server looks for a physical file named \`/posts/my-article/index.html\` and returns a 404 error.
 
-The rewrite rule instructs Vercel to route all non-asset requests back to \`/index.html\`, allowing React's client-side router to handle the route seamlessly.
+Applying proper **Vercel rewrite rules** instructs Vercel to route all non-asset requests back to \`/index.html\`, allowing React's client-side router to handle the route seamlessly and permanently **fix Vercel SPA 404 errors**.
 
 :::note
 Notice the negative lookahead \`(?!assets/|robots.txt|sitemap.xml)\`. This ensures static assets, sitemaps, and robots.txt are served directly rather than falling back to the HTML wrapper.
@@ -282,49 +322,70 @@ Once connected, every push to your main branch triggers an automatic production 
     coverImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&h=630&q=80',
     coverImageAlt: 'Clean lines of code displayed on multiple high-resolution developer monitors',
     category: 'Engineering',
-    tags: ['React', 'Architecture', 'TypeScript', 'Vite', 'Performance'],
+    tags: ['Modern Frontend Architecture', 'React Server Components', 'Vite performance', 'islands architecture', 'TypeScript project structure'],
     author: INITIAL_AUTHORS.elena,
     publishedAt: '2026-03-18T14:15:00Z',
     updatedAt: '2026-03-21T10:00:00Z',
     readingTimeMinutes: 9,
-    wordCount: 1650,
+    wordCount: 1720,
     featured: true,
     trending: false,
     views: 19800,
     claps: 780,
     seo: {
-      metaTitle: 'Mastering Modern Frontend Architecture: Islands & Vite',
-      metaDescription: 'Explore component composition, selective hydration boundaries, and high-performance Vite tooling for building scalable modern web applications.',
-      keywords: ['Frontend Architecture', 'React 19', 'Vite', 'TypeScript', 'Web Development'],
+      metaTitle: 'Modern Frontend Architecture: RSCs, Islands & Vite Scale',
+      metaDescription: 'Explore modern frontend architecture: React Server Components, hydration optimization, Vite performance, islands architecture, and TypeScript project structure.',
+      mainKeyword: 'Modern Frontend Architecture',
+      relatedKeywords: [
+        'React Server Components',
+        'React hydration optimization',
+        'Vite performance',
+        'modular frontend architecture',
+        'TypeScript project structure',
+        'islands architecture',
+      ],
+      searchVolume: '100–800 /mo',
+      keywordDifficulty: '10–30 (Low)',
+      keywords: [
+        'Modern Frontend Architecture',
+        'React Server Components',
+        'React hydration optimization',
+        'Vite performance',
+        'modular frontend architecture',
+        'TypeScript project structure',
+        'islands architecture',
+      ],
       canonicalUrl: 'https://luminablog.vercel.app/#post/mastering-modern-frontend-architecture',
       ogImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&h=630&q=80',
       twitterCardType: 'summary_large_image',
       structuredDataType: 'TechArticle',
     },
     tableOfContents: [
-      { id: 'the-evolution-of-spas', text: '1. The Evolution of SPA Architecture', level: 2 },
-      { id: 'zero-cost-abstractions', text: '2. Designing Zero-Cost Component Boundaries', level: 2 },
-      { id: 'vite-esm-tooling', text: '3. Why Vite Won the Bundler Wars', level: 2 },
-      { id: 'state-management-discipline', text: '4. State Management Without Global Soup', level: 2 },
+      { id: 'the-evolution-of-spas', text: '1. Modern Frontend Architecture & Islands Paradigm', level: 2 },
+      { id: 'zero-cost-abstractions', text: '2. React Server Components & React Hydration Optimization', level: 2 },
+      { id: 'vite-esm-tooling', text: '3. Maximizing Vite Performance at Scale', level: 2 },
+      { id: 'modular-architecture-patterns', text: '4. Modular Frontend Architecture & TypeScript Project Structure', level: 2 },
     ],
-    content: `The modern frontend ecosystem has finally graduated from the era of monolithic megabyte-sized bundles. For years, developers wrestled with slow Webpack cold starts and cumbersome configurations. Today, modular architectures powered by native ES modules and fine-grained reactivity deliver instant feedback loops.
+    content: `The web ecosystem has evolved beyond monolithic megabyte-sized client bundles. Today, adopting a disciplined **modern frontend architecture** allows engineering teams to construct massive applications that boot instantly, maintain sub-second navigation, and deliver ergonomic developer workflows.
 
-In this deep dive, we break down the core architectural patterns powering resilient, lightning-fast web applications.
+In this deep architectural dive, we examine **React Server Components**, **React hydration optimization**, maximizing **Vite performance**, implementing **islands architecture**, and designing a scalable **TypeScript project structure** within a clean **modular frontend architecture**.
 
-## 1. The Evolution of SPA Architecture {#the-evolution-of-spas}
+## 1. Modern Frontend Architecture & Islands Paradigm {#the-evolution-of-spas}
 
 Traditional single-page applications shipped complete framework runtimes on page load, forcing mobile devices to spend hundreds of milliseconds parsing JavaScript before rendering the first meaningful pixel.
 
-Modern frontend engineering treats hydration as an intentional budget:
+Modern engineering combines **islands architecture** with strict hydration budgets:
 - **Static Content First**: Editorial copy, headers, and navigation do not require dynamic state loops.
-- **Interactive Islands**: Dynamic components—such as search modals, like buttons, and comment forms—isolate their reactive state into self-contained units.
+- **Interactive Islands**: Dynamic components—such as search modals, like buttons, and comment forms—isolate their reactive state into self-contained units without bloating the global tree.
 
-## 2. Designing Zero-Cost Component Boundaries {#zero-cost-abstractions}
+## 2. React Server Components & React Hydration Optimization {#zero-cost-abstractions}
 
-When composing React components, resist the temptation to prematurely introduce heavy abstraction layers. Favor standard functional primitives:
+Leveraging **React Server Components** shifts heavy computation and data fetching to the server, delivering pristine HTML directly to the browser. Combined with **React hydration optimization**, clients only execute hydration steps for interactive components that require event listeners.
+
+Here is an architectural pattern illustrating zero-cost component boundaries within a clean **TypeScript project structure**:
 
 \`\`\`typescript
-// Clean, composable UI pattern
+// Clean, modular frontend architecture pattern
 interface ArticleProps {
   post: BlogPost;
   onBookmark: (id: string) => void;
@@ -345,15 +406,15 @@ export function ArticleCard({ post, onBookmark, isBookmarked }: ArticleProps) {
 }
 \`\`\`
 
-## 3. Why Vite Won the Bundler Wars {#vite-esm-tooling}
+## 3. Maximizing Vite Performance at Scale {#vite-esm-tooling}
 
-Vite transformed the developer experience by decoupling server start times from application size. During development, Vite serves source code over native ESM, delegating module graph resolution to the browser. Hot Module Replacement occurs in under 20 milliseconds, regardless of whether your project contains 10 or 10,000 components.
+Achieving peak **Vite performance** transformed the developer experience by decoupling server start times from codebase size. During development, Vite serves source code over native ESM, delegating module graph resolution to the browser. Hot Module Replacement occurs in under 20 milliseconds, regardless of whether your project contains 10 or 10,000 components.
 
-For production builds, Rollup and esbuild package clean, treeshaken assets with hashed filenames that cache indefinitely on CDNs.
+For production builds, Rollup and esbuild package clean, treeshaken assets with hashed filenames that cache indefinitely on edge CDNs.
 
-## 4. State Management Without Global Soup {#state-management-discipline}
+## 4. Modular Frontend Architecture & TypeScript Project Structure {#modular-architecture-patterns}
 
-Global state stores often become dumping grounds for transient state. Adopt the Rule of Proximity:
+Global state stores often become dumping grounds for transient state. A resilient **modular frontend architecture** adheres to the Rule of Proximity:
 
 1. **Local State**: State needed by one component stays in \`useState\`.
 2. **Lifted State**: State shared by siblings moves to their closest common ancestor.
@@ -420,44 +481,88 @@ Set body font sizes between 18px and 20px with a line-height ratio of 1.75 to 1.
     coverImage: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&h=630&q=80',
     coverImageAlt: 'Abstract 3D digital neural network visualization glowing with iridescent cyan and purple gradients',
     category: 'Artificial Intelligence',
-    tags: ['AI', 'LLMs', 'Gemini', 'Prompt Engineering', 'TypeScript'],
+    tags: ['LLM Workflow Orchestration', 'Zod structured outputs', 'prompt chaining examples', 'AI workflow automation with TypeScript', 'LLM latency optimization'],
     author: INITIAL_AUTHORS.sophia,
     publishedAt: '2026-03-05T13:45:00Z',
     updatedAt: '2026-03-10T11:00:00Z',
     readingTimeMinutes: 8,
-    wordCount: 1510,
+    wordCount: 1560,
     featured: false,
     trending: true,
     views: 15400,
     claps: 710,
     seo: {
-      metaTitle: 'Building LLM-Powered Workflows: Structured Outputs & Speed',
-      metaDescription: 'Learn architectural patterns for prompt chaining, JSON schema enforcement, and latency reduction in production generative AI applications.',
-      keywords: ['Generative AI', 'LLM Architecture', 'Gemini API', 'Structured Outputs', 'AI Workflows'],
+      metaTitle: 'LLM Workflow Orchestration: Prompt Chaining & Zod Outputs',
+      metaDescription: 'Master LLM workflow orchestration: Zod structured outputs, prompt chaining examples, AI workflow automation with TypeScript, and latency optimization.',
+      mainKeyword: 'LLM Workflow Orchestration',
+      relatedKeywords: [
+        'Zod structured outputs',
+        'prompt chaining examples',
+        'AI workflow automation with TypeScript',
+        'LLM output validation',
+        'AI agent orchestration',
+        'LLM latency optimization',
+      ],
+      searchVolume: '50–400 /mo',
+      keywordDifficulty: '5–30 (Very Low)',
+      keywords: [
+        'LLM Workflow Orchestration',
+        'Zod structured outputs',
+        'prompt chaining examples',
+        'AI workflow automation with TypeScript',
+        'LLM output validation',
+        'AI agent orchestration',
+        'LLM latency optimization',
+      ],
       canonicalUrl: 'https://luminablog.vercel.app/#post/building-llm-powered-workflows-latency',
       ogImage: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&h=630&q=80',
       twitterCardType: 'summary_large_image',
       structuredDataType: 'TechArticle',
     },
     tableOfContents: [
-      { id: 'deterministic-outputs', text: '1. Deterministic JSON Schemas', level: 2 },
-      { id: 'latency-reduction-techniques', text: '2. Slashing Time-to-First-Token', level: 2 },
-      { id: 'evals-and-guardrails', text: '3. Automated Evals & Production Guardrails', level: 2 },
+      { id: 'deterministic-outputs', text: '1. Zod Structured Outputs & LLM Output Validation', level: 2 },
+      { id: 'prompt-chaining-patterns', text: '2. Prompt Chaining Examples & AI Agent Orchestration', level: 2 },
+      { id: 'latency-reduction-techniques', text: '3. LLM Latency Optimization & AI Workflow Automation with TypeScript', level: 2 },
     ],
-    content: `Building toy AI demos is easy; deploying mission-critical LLM features that operate predictably within an enterprise SLA requires rigorous software engineering discipline.
+    content: `Building basic AI demos is trivial; implementing mission-critical **LLM workflow orchestration** that operates deterministically within an enterprise SLA requires software engineering discipline.
 
-## 1. Deterministic JSON Schemas {#deterministic-outputs}
+In this technical guide, we review **Zod structured outputs**, practical **prompt chaining examples**, real-world **AI workflow automation with TypeScript**, rigorous **LLM output validation**, multi-step **AI agent orchestration**, and strategies for **LLM latency optimization**.
 
-Never rely on natural language begging like *"Please return only valid JSON and no markdown formatting"*. Modern models natively support constrained decoding and structured output schemas.
+## 1. Zod Structured Outputs & LLM Output Validation {#deterministic-outputs}
 
-By providing a JSON Schema directly in the API call, the model's logits are constrained during sampling, mathematically preventing formatting hallucinations.
+Never rely on natural language begging like *"Please return only valid JSON and no markdown formatting"*. Production systems employ **Zod structured outputs** and strict **LLM output validation**.
 
-## 2. Slashing Time-to-First-Token {#latency-reduction-techniques}
+By feeding schema definitions directly into modern model APIs (such as Gemini 2.5/3 or OpenAI Structured Outputs), the model's logits are constrained during sampling, mathematically eliminating formatting hallucinations.
 
-Users perceive latency acutely. To keep interactive AI features responsive:
+\`\`\`typescript
+// AI workflow automation with TypeScript using Zod schema validation
+import { z } from 'zod';
+
+export const EditorialAnalysisSchema = z.object({
+  sentiment: z.enum(['positive', 'neutral', 'critical']),
+  keyTakeaways: z.array(z.string().min(10)),
+  confidenceScore: z.number().min(0).max(1),
+  suggestedTags: z.array(z.string()),
+});
+
+export type EditorialAnalysis = z.infer<typeof EditorialAnalysisSchema>;
+\`\`\`
+
+## 2. Prompt Chaining Examples & AI Agent Orchestration {#prompt-chaining-patterns}
+
+Instead of asking a single prompt to perform complex reasoning, research, and synthesis all at once, modern **AI agent orchestration** decomposes tasks into sequential steps with **prompt chaining examples**:
+
+1. **Step 1: Ingestion & Entity Extraction**: Extract core concepts from unstructured input into typed records.
+2. **Step 2: Fact Verification & Grounding**: Cross-reference extracted claims against internal vector indices or database truth.
+3. **Step 3: Synthesis & Formatting**: Produce the final client response guaranteed against the verified schema.
+
+## 3. LLM Latency Optimization & AI Workflow Automation with TypeScript {#latency-reduction-techniques}
+
+Users perceive latency acutely. To keep your automated workflows responsive:
 1. **Stream Responses**: Display streamed chunks immediately using server-sent events or WebSocket connections.
 2. **Model Tiering**: Route simple extraction tasks to fast Flash-tier models, reserving heavier reasoning models for multi-step synthesis.
-3. **Prompt Caching**: Store recurring static instructions and system prompts in persistent context caches.`,
+3. **Prompt Caching**: Store recurring static instructions and system prompts in persistent context caches.
+4. **LLM Latency Optimization**: Execute independent validation and embedding calls in parallel using \`Promise.all()\`.`,
   },
   {
     id: 'distributed-state-crdts-event-sourcing',

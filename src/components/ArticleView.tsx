@@ -410,6 +410,26 @@ export const ArticleView: React.FC<ArticleViewProps> = ({
           {post.title}
         </h1>
 
+        {/* Target SEO Keyword Pill */}
+        {post.seo.mainKeyword && (
+          <div className="mt-3 inline-flex flex-wrap items-center gap-2 p-1.5 px-3 rounded-xl bg-slate-100/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 text-xs shadow-xs">
+            <span className="font-semibold text-slate-500 dark:text-slate-400">Target Keyword:</span>
+            <span className="font-bold text-indigo-600 dark:text-indigo-400 font-mono">
+              {post.seo.mainKeyword}
+            </span>
+            {post.seo.searchVolume && (
+              <span className="px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300 text-[10px] font-semibold">
+                Est. Vol: {post.seo.searchVolume}
+              </span>
+            )}
+            {post.seo.keywordDifficulty && (
+              <span className="px-1.5 py-0.5 rounded bg-indigo-100 dark:bg-indigo-950/70 text-indigo-700 dark:text-indigo-300 text-[10px] font-semibold">
+                KD: {post.seo.keywordDifficulty}
+              </span>
+            )}
+          </div>
+        )}
+
         {/* Subtitle / Excerpt */}
         {post.subtitle && (
           <p className="mt-4 text-lg sm:text-xl text-slate-600 dark:text-slate-300 font-editorial leading-relaxed">
@@ -548,6 +568,21 @@ export const ArticleView: React.FC<ArticleViewProps> = ({
               </span>
             ))}
           </div>
+
+          {/* Related Keywords & Semantic Topic Cluster */}
+          {post.seo.relatedKeywords && post.seo.relatedKeywords.length > 0 && (
+            <div className="mt-3 flex flex-wrap items-center gap-1.5">
+              <span className="text-xs font-semibold text-slate-400 mr-1">Semantic Topics:</span>
+              {post.seo.relatedKeywords.map((kw) => (
+                <span
+                  key={kw}
+                  className="text-[11px] font-mono px-2 py-0.5 rounded-md bg-indigo-50/70 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 border border-indigo-200/50 dark:border-indigo-900/50"
+                >
+                  {kw}
+                </span>
+              ))}
+            </div>
+          )}
 
           {/* Interactive Claps & Reactions */}
           <div className="mt-8 p-6 rounded-2xl bg-gradient-to-r from-indigo-50/50 via-purple-50/30 to-pink-50/40 dark:from-indigo-950/20 dark:via-purple-950/10 dark:to-pink-950/20 border border-indigo-100 dark:border-indigo-900/50 flex flex-col sm:flex-row items-center justify-between gap-4">

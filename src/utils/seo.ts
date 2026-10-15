@@ -121,6 +121,18 @@ export function generateBlogPostingSchema(post: BlogPost, baseUrl = DEFAULT_BASE
       },
     },
     keywords: post.seo.keywords.join(', '),
+    about: post.seo.mainKeyword
+      ? [
+          {
+            '@type': 'Thing',
+            name: post.seo.mainKeyword,
+          },
+          ...(post.seo.relatedKeywords || []).map((kw) => ({
+            '@type': 'Thing',
+            name: kw,
+          })),
+        ]
+      : undefined,
     articleSection: post.category,
     wordCount: post.wordCount,
     timeRequired: `PT${post.readingTimeMinutes}M`,
@@ -334,6 +346,32 @@ export function analyzePostSeo(post: BlogPost): SeoAuditReport {
     value: `@type: "${post.seo.structuredDataType}"`,
     recommendation: 'Structured markup enabled to unlock Google Rich Results and author knowledge badges.',
   });
+
+  // Check 9: Target Keyword Alignment & Competitiveness
+  if (post.seo.mainKeyword) {
+    const mainKwLower = post.seo.mainKeyword.toLowerCase();
+    const inTitle = title.toLowerCase().includes(mainKwLower);
+    const inDesc = description.toLowerCase().includes(mainKwLower);
+    const inBody = content.toLowerCase().includes(mainKwLower);
+
+    if (inTitle && inDesc && inBody) {
+      checks.push({
+        id: 'target-keyword',
+        label: 'Target Keyword Alignment',
+        status: 'pass',
+        value: `"${post.seo.mainKeyword}" (${post.seo.searchVolume || 'High Intent'}, KD: ${post.seo.keywordDifficulty || 'Low'})`,
+        recommendation: 'Primary target keyword is prominently placed in Title, Meta Description, and Content body.',
+      });
+    } else {
+      checks.push({
+        id: 'target-keyword',
+        label: 'Target Keyword Alignment',
+        status: inBody ? 'pass' : 'warning',
+        value: `"${post.seo.mainKeyword}" (${post.seo.searchVolume || 'Target'})`,
+        recommendation: inTitle ? 'Keyword is present in title and body.' : 'Consider placing main keyword in title and meta description.',
+      });
+    }
+  }
 
   // Calculate Keyword density
   const primaryKeywords = post.seo.keywords;

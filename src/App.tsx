@@ -38,7 +38,15 @@ export default function App() {
   const [posts, setPosts] = React.useState<BlogPost[]>(() => {
     try {
       const saved = localStorage.getItem('lumina_posts');
-      if (saved) return JSON.parse(saved);
+      if (saved) {
+        const parsed = JSON.parse(saved) as BlogPost[];
+        // If cached posts lack mainKeyword, refresh with new keyword-optimized posts
+        if (parsed.some(p => !p.seo?.mainKeyword)) {
+          localStorage.setItem('lumina_posts', JSON.stringify(INITIAL_POSTS));
+          return INITIAL_POSTS;
+        }
+        return parsed;
+      }
     } catch (e) {
       console.warn('Failed to load posts from storage', e);
     }
