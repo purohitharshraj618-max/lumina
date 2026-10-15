@@ -117,6 +117,13 @@ export const VercelDeployModal: React.FC<VercelDeployModalProps> = ({
       status: 'ready',
       details: 'Protects the publication from clickjacking and MIME-type sniffing.',
     },
+    {
+      id: 'npmrc-guard',
+      title: '.npmrc Peer Dependency Guard',
+      description: 'Contains legacy-peer-deps=true to prevent npm ERESOLVE conflicts on Vercel.',
+      status: 'ready',
+      details: 'Eliminated esbuild version conflict and guaranteed clean npm install on Vercel.',
+    },
   ];
 
   const handleCopy = (text: string, setCopied: (v: boolean) => void) => {
@@ -207,7 +214,7 @@ ${post.content}
             }`}
           >
             <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-            Readiness Checklist (6/6)
+            Readiness Checklist ({vercelChecks.length}/{vercelChecks.length})
           </button>
 
           <button
